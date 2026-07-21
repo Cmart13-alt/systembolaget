@@ -1,15 +1,12 @@
 const fs = require("fs");
 const path = require("path");
 
-
 function generateReport(products, stores) {
-
 
     const css = fs.readFileSync(
         path.join(__dirname, "style.css"),
         "utf8"
     );
-
 
     const js = fs.readFileSync(
         path.join(__dirname, "app.js"),
@@ -34,7 +31,6 @@ function generateReport(products, stores) {
         .map(product => createProductCard(product, stores))
         .join("\n");
 
-
     return `
 <!DOCTYPE html>
 <html lang="sv">
@@ -43,33 +39,25 @@ function generateReport(products, stores) {
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="theme-color"
-      content="#0b6b3a">
+<meta name="theme-color" content="#0b6b3a">
 
-<meta name="description"
-      content="Tillfälligt sortiment på Systembolaget i Växjö">
+<meta name="description" content="Tillfälligt sortiment på Systembolaget i Växjö">
 
-<meta name="apple-mobile-web-app-capable"
-      content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 
-<meta name="apple-mobile-web-app-status-bar-style"
-      content="default">
+<meta name="apple-mobile-web-app-capable" content="yes">
 
-<meta name="apple-mobile-web-app-title"
-      content="Vinguide">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-<link rel="manifest"
-      href="manifest.json">
+<meta name="apple-mobile-web-app-title" content="Vinguide">
 
-<link rel="icon"
-      href="icon-192.png"
-      type="image/png">
+<link rel="manifest" href="manifest.json">
+
+<link rel="icon" href="icon-192.png" type="image/png">
 
 <title>Tillfälligt sortiment – Växjö</title>
-
 
 <style>
 
@@ -79,9 +67,7 @@ ${css}
 
 </head>
 
-
 <body>
-
 
 <header class="header">
 
