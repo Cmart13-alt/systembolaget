@@ -1,14 +1,22 @@
 {
   "name": "systembolaget",
   "version": "1.0.0",
-  "description": "",
-  "main": "systembolaget.js",
+  "description": "Mobilanpassad webbapp för Systembolagets tillfälliga sortiment i Växjö",
+  "main": "src/systembolaget.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/systembolaget.js",
+    "build": "node src/systembolaget.js",
+    "serve": "npx http-server docs",
+    "deploy": "node deploy.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "systembolaget",
+    "vin",
+    "pwa",
+    "node"
+  ],
+  "author": "Mårten Sundén",
+  "license": "MIT",
   "type": "commonjs",
   "dependencies": {
     "axios": "^1.18.1",

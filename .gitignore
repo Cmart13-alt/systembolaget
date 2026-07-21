@@ -1,0 +1,22 @@
+# Node
+node_modules/
+
+# Miljövariabler
+.env
+
+# Loggar
+*.log
+npm-debug.log*
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Tillfälliga filer
+*.tmp

@@ -61,12 +61,12 @@ async function main() {
     const html = generateReport(products, stores);
 
 
-    const filename =
-        path.join(
-            __dirname,
-            "docs/index.html"
-        );
-
+    const filename = path.join(
+        __dirname,
+        "..",
+        "docs",
+        "index.html"
+    );
 
 
     fs.writeFileSync(
