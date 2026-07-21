@@ -198,6 +198,10 @@ ${css}
 
 <select id="sortSelect">
 
+<option value="">
+Sortera efter...
+</option>
+
 <option value="name">
 Namn A–Ö
 </option>
