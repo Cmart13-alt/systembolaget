@@ -89,9 +89,9 @@ body {
 
 .header h1 {
 
-    margin:0;
-
-    font-size:36px;
+    display:flex;
+    align-items:center;
+    gap:12px;
 
 }
 
@@ -139,7 +139,7 @@ body {
     background:
         rgba(255,255,255,.15);
 
-    padding:15px 25px;
+    padding:12px 16px;
 
     border-radius:12px;
 
@@ -570,33 +570,120 @@ body {
 @media (max-width: 800px){
 
     body{
-        padding:15px;
+        padding:12px;
     }
 
+    /* ---------- Header ---------- */
+
+    .header{
+
+        padding:20px;
+        margin-bottom:20px;
+        border-radius:16px;
+
+    }
+
+    .header h1{
+
+        gap:8px;
+        font-size:1.8rem;
+
+    }
+
+    .emoji{
+
+        font-size:1.5rem;
+
+    }
+
+    .header p{
+
+        margin-top:6px;
+        font-size:1rem;
+
+    }
+
+    .updated{
+
+        margin-top:10px;
+        font-size:.9rem;
+
+    }
+
+    /* ---------- Statistik ---------- */
+
+    .summary{
+
+        gap:10px;
+        margin-top:18px;
+
+    }
+
+    .summary-box{
+
+        flex:1 1 calc(50% - 10px);
+
+        min-width:0;
+
+        padding:12px;
+
+    }
+
+    .summary-box strong{
+
+        font-size:2rem;
+
+    }
+
+    .summary-box span{
+
+        font-size:.95rem;
+
+    }
+
+    /* ---------- Sökfält ---------- */
+
+    #search{
+
+        padding:15px 18px;
+        font-size:16px;
+
+    }
+
+    /* ---------- Produkter ---------- */
+
     .products{
+
         grid-template-columns:1fr;
+
     }
 
     .wine-card{
+
         overflow:hidden;
+
     }
 
     .image-area{
+
         height:120px;
         display:flex;
         justify-content:center;
         align-items:center;
         overflow:hidden;
         background:#fafafa;
+
     }
 
     .image-area img{
+
         display:block;
         width:auto !important;
         height:100px !important;
         max-width:70px !important;
         max-height:100px !important;
         object-fit:contain;
+
     }
 
 }
@@ -609,13 +696,16 @@ body {
 
 <header class="header">
 
-    <h1>🍷 Tillfälligt sortiment</h1>
+    <h1>
+    <span class="emoji">🍷</span>
+    <span>Tillfälligt sortiment</span>
+    </h1>
 
     <p>
         Växjöbutikerna · Tillfälligt sortiment
     </p>
     <p class="updated">
-    🕒 Senast uppdaterad: 2026-07-21 12:12
+    🕒 Senast uppdaterad: 2026-07-21 12:33
     </p>
 
     <div class="summary">
@@ -704,7 +794,7 @@ body {
         data-store="0707"
         onclick="filterStore('0707')">
 
-            <strong>44</strong>
+            <strong>43</strong>
             <span>🏬 Grand Samarkand</span>
 
         </div>
@@ -1373,7 +1463,7 @@ data-vintage="2024"
 data-alcohol="13"
 
 data-0701="7"
-data-0707="1"
+data-0707="0"
 data-0710="13"
 
 >
@@ -1493,8 +1583,8 @@ Kryddig smak med inslag av mörka körsbär, rosor, hallon, muskot, peppar och p
 
             <td>Grand Samarkand</td>
 
-            <td class="low">
-                1 st
+            <td class="empty">
+                Slut
             </td>
 
             <td>
@@ -7530,205 +7620,6 @@ target="_blank">
 
 
 
-<article class="wine-card rosévin"
-
-data-type="Rosévin"
-
-data-name="Lievland Rosé"
-
-data-price="129"
-
-data-vintage="2025"
-
-data-alcohol="12.5"
-
-data-0701="12"
-data-0707="0"
-data-0710="0"
-
->
-
-<div class="image-area">
-
-    <img src="https://product-cdn.systembolaget.se/productimages/60794491/60794491_400.png" alt="">
-
-</div>
-
-
-
-<div class="wine-info">
-
-
-<h2>
-
-Lievland
-
-Rosé
-
-</h2>
-
-
-
-<div class="tags">
-
-
-<span>
-🌍 Sydafrika
-</span>
-
-
-<span>📍 Western Cape</span>
-
-
-<span>
-💰 129 kr
-</span>
-
-
-<span>📅 2025</span>
-
-
-</div>
-
-
-
-<p>
-
-<b>Producent</b><br>
-
-Lievland Vineyards
-
-</p>
-
-
-
-<p>
-
-<b>🍇 Druvor</b><br>
-
-Syrah, Mourvèdre, Cinsault
-
-</p>
-
-
-
-<p>
-
-<b>Smak</b><br>
-
-Bärig, mycket frisk smak med inslag av röda vinbär, örter, smultron, rabarber, hallon och blodgrapefrukt.
-
-</p>
-
-
-
-
-<h3>
-📦 Lager
-</h3>
-
-
-
-<table class="stock-table">
-
-
-<tr>
-
-<th>Butik</th>
-<th>Antal</th>
-<th>Hylla</th>
-
-</tr>
-
-
-
-
-        <tr>
-
-            <td>Växjö City</td>
-
-            <td class="good">
-                12 st
-            </td>
-
-            <td>
-                ts-00-00
-            </td>
-
-        </tr>
-
-        
-
-        <tr>
-
-            <td>Grand Samarkand</td>
-
-            <td class="empty">
-                Slut
-            </td>
-
-            <td>
-                -
-            </td>
-
-        </tr>
-
-        
-
-        <tr>
-
-            <td>Norremark</td>
-
-            <td class="empty">
-                Slut
-            </td>
-
-            <td>
-                -
-            </td>
-
-        </tr>
-
-        
-
-
-</table>
-
-
-
-<div class="buttons">
-
-
-<a href="https://www.systembolaget.se/produkt/vin/lievland-rose-9204501/"
-target="_blank">
-
-🛒</br>Systembolaget
-
-</a>
-
-
-
-<a href="https://www.vivino.com/sv/explore?search_term=Lievland%20Vineyards%20Lievland%20Ros%C3%A9%202025"
-target="_blank">
-
-⭐</br>Vivino
-
-</a>
-
-
-</div>
-
-
-</div>
-
-
-</article>
-
-
-
-
-
-
 <article class="wine-card vitt-vin"
 
 data-type="Vitt vin"
@@ -7908,6 +7799,205 @@ target="_blank">
 
 
 <a href="https://www.vivino.com/sv/explore?search_term=G.D.%20Vajra%20Moscato%20d'Asti%20G.D.%20Vajra%202025"
+target="_blank">
+
+⭐</br>Vivino
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</article>
+
+
+
+
+
+
+<article class="wine-card rosévin"
+
+data-type="Rosévin"
+
+data-name="Lievland Rosé"
+
+data-price="129"
+
+data-vintage="2025"
+
+data-alcohol="12.5"
+
+data-0701="12"
+data-0707="0"
+data-0710="0"
+
+>
+
+<div class="image-area">
+
+    <img src="https://product-cdn.systembolaget.se/productimages/60794491/60794491_400.png" alt="">
+
+</div>
+
+
+
+<div class="wine-info">
+
+
+<h2>
+
+Lievland
+
+Rosé
+
+</h2>
+
+
+
+<div class="tags">
+
+
+<span>
+🌍 Sydafrika
+</span>
+
+
+<span>📍 Western Cape</span>
+
+
+<span>
+💰 129 kr
+</span>
+
+
+<span>📅 2025</span>
+
+
+</div>
+
+
+
+<p>
+
+<b>Producent</b><br>
+
+Lievland Vineyards
+
+</p>
+
+
+
+<p>
+
+<b>🍇 Druvor</b><br>
+
+Syrah, Mourvèdre, Cinsault
+
+</p>
+
+
+
+<p>
+
+<b>Smak</b><br>
+
+Bärig, mycket frisk smak med inslag av röda vinbär, örter, smultron, rabarber, hallon och blodgrapefrukt.
+
+</p>
+
+
+
+
+<h3>
+📦 Lager
+</h3>
+
+
+
+<table class="stock-table">
+
+
+<tr>
+
+<th>Butik</th>
+<th>Antal</th>
+<th>Hylla</th>
+
+</tr>
+
+
+
+
+        <tr>
+
+            <td>Växjö City</td>
+
+            <td class="good">
+                12 st
+            </td>
+
+            <td>
+                ts-00-00
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>Grand Samarkand</td>
+
+            <td class="empty">
+                Slut
+            </td>
+
+            <td>
+                -
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>Norremark</td>
+
+            <td class="empty">
+                Slut
+            </td>
+
+            <td>
+                -
+            </td>
+
+        </tr>
+
+        
+
+
+</table>
+
+
+
+<div class="buttons">
+
+
+<a href="https://www.systembolaget.se/produkt/vin/lievland-rose-9204501/"
+target="_blank">
+
+🛒</br>Systembolaget
+
+</a>
+
+
+
+<a href="https://www.vivino.com/sv/explore?search_term=Lievland%20Vineyards%20Lievland%20Ros%C3%A9%202025"
 target="_blank">
 
 ⭐</br>Vivino
@@ -11116,205 +11206,6 @@ target="_blank">
 
 data-type="Rosévin"
 
-data-name="Leitz Rüdesheim Pinot Noir Rosé"
-
-data-price="149"
-
-data-vintage="2025"
-
-data-alcohol="12.5"
-
-data-0701="4"
-data-0707="0"
-data-0710="0"
-
->
-
-<div class="image-area">
-
-    <img src="https://product-cdn.systembolaget.se/productimages/33770167/33770167_400.png" alt="">
-
-</div>
-
-
-
-<div class="wine-info">
-
-
-<h2>
-
-Leitz
-
-Rüdesheim Pinot Noir Rosé
-
-</h2>
-
-
-
-<div class="tags">
-
-
-<span>
-🌍 Tyskland
-</span>
-
-
-<span>📍 Rheingau</span>
-
-
-<span>
-💰 149 kr
-</span>
-
-
-<span>📅 2025</span>
-
-
-</div>
-
-
-
-<p>
-
-<b>Producent</b><br>
-
-Weingut Leitz
-
-</p>
-
-
-
-<p>
-
-<b>🍇 Druvor</b><br>
-
-Pinot noir
-
-</p>
-
-
-
-<p>
-
-<b>Smak</b><br>
-
-Bärig smak med inslag av smultron, färska örter, hallon, vit persika och blodgrapefrukt.
-
-</p>
-
-
-
-
-<h3>
-📦 Lager
-</h3>
-
-
-
-<table class="stock-table">
-
-
-<tr>
-
-<th>Butik</th>
-<th>Antal</th>
-<th>Hylla</th>
-
-</tr>
-
-
-
-
-        <tr>
-
-            <td>Växjö City</td>
-
-            <td class="low">
-                4 st
-            </td>
-
-            <td>
-                ts-00-00
-            </td>
-
-        </tr>
-
-        
-
-        <tr>
-
-            <td>Grand Samarkand</td>
-
-            <td class="empty">
-                Slut
-            </td>
-
-            <td>
-                -
-            </td>
-
-        </tr>
-
-        
-
-        <tr>
-
-            <td>Norremark</td>
-
-            <td class="empty">
-                Slut
-            </td>
-
-            <td>
-                -
-            </td>
-
-        </tr>
-
-        
-
-
-</table>
-
-
-
-<div class="buttons">
-
-
-<a href="https://www.systembolaget.se/produkt/vin/leitz-rudesheim-pinot-noir-rose-9029601/"
-target="_blank">
-
-🛒</br>Systembolaget
-
-</a>
-
-
-
-<a href="https://www.vivino.com/sv/explore?search_term=Weingut%20Leitz%20Leitz%20R%C3%BCdesheim%20Pinot%20Noir%20Ros%C3%A9%202025"
-target="_blank">
-
-⭐</br>Vivino
-
-</a>
-
-
-</div>
-
-
-</div>
-
-
-</article>
-
-
-
-
-
-
-<article class="wine-card rosévin"
-
-data-type="Rosévin"
-
 data-name="G.D. Vajra Rosabella Rosato"
 
 data-price="139"
@@ -11490,6 +11381,205 @@ target="_blank">
 
 
 <a href="https://www.vivino.com/sv/explore?search_term=G.D.%20Vajra%20G.D.%20Vajra%20Rosabella%20Rosato%202025"
+target="_blank">
+
+⭐</br>Vivino
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</article>
+
+
+
+
+
+
+<article class="wine-card rosévin"
+
+data-type="Rosévin"
+
+data-name="Leitz Rüdesheim Pinot Noir Rosé"
+
+data-price="149"
+
+data-vintage="2025"
+
+data-alcohol="12.5"
+
+data-0701="4"
+data-0707="0"
+data-0710="0"
+
+>
+
+<div class="image-area">
+
+    <img src="https://product-cdn.systembolaget.se/productimages/33770167/33770167_400.png" alt="">
+
+</div>
+
+
+
+<div class="wine-info">
+
+
+<h2>
+
+Leitz
+
+Rüdesheim Pinot Noir Rosé
+
+</h2>
+
+
+
+<div class="tags">
+
+
+<span>
+🌍 Tyskland
+</span>
+
+
+<span>📍 Rheingau</span>
+
+
+<span>
+💰 149 kr
+</span>
+
+
+<span>📅 2025</span>
+
+
+</div>
+
+
+
+<p>
+
+<b>Producent</b><br>
+
+Weingut Leitz
+
+</p>
+
+
+
+<p>
+
+<b>🍇 Druvor</b><br>
+
+Pinot noir
+
+</p>
+
+
+
+<p>
+
+<b>Smak</b><br>
+
+Bärig smak med inslag av smultron, färska örter, hallon, vit persika och blodgrapefrukt.
+
+</p>
+
+
+
+
+<h3>
+📦 Lager
+</h3>
+
+
+
+<table class="stock-table">
+
+
+<tr>
+
+<th>Butik</th>
+<th>Antal</th>
+<th>Hylla</th>
+
+</tr>
+
+
+
+
+        <tr>
+
+            <td>Växjö City</td>
+
+            <td class="low">
+                4 st
+            </td>
+
+            <td>
+                ts-00-00
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>Grand Samarkand</td>
+
+            <td class="empty">
+                Slut
+            </td>
+
+            <td>
+                -
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>Norremark</td>
+
+            <td class="empty">
+                Slut
+            </td>
+
+            <td>
+                -
+            </td>
+
+        </tr>
+
+        
+
+
+</table>
+
+
+
+<div class="buttons">
+
+
+<a href="https://www.systembolaget.se/produkt/vin/leitz-rudesheim-pinot-noir-rose-9029601/"
+target="_blank">
+
+🛒</br>Systembolaget
+
+</a>
+
+
+
+<a href="https://www.vivino.com/sv/explore?search_term=Weingut%20Leitz%20Leitz%20R%C3%BCdesheim%20Pinot%20Noir%20Ros%C3%A9%202025"
 target="_blank">
 
 ⭐</br>Vivino
@@ -19669,205 +19759,6 @@ target="_blank">
 
 
 
-<article class="wine-card rosévin"
-
-data-type="Rosévin"
-
-data-name="Susucaru Rosato"
-
-data-price="269"
-
-data-vintage="2025"
-
-data-alcohol="13.5"
-
-data-0701="0"
-data-0707="0"
-data-0710="23"
-
->
-
-<div class="image-area">
-
-    <img src="https://product-cdn.systembolaget.se/productimages/64606036/64606036_400.png" alt="">
-
-</div>
-
-
-
-<div class="wine-info">
-
-
-<h2>
-
-Susucaru
-
-Rosato
-
-</h2>
-
-
-
-<div class="tags">
-
-
-<span>
-🌍 Italien
-</span>
-
-
-<span>📍 Sicilien</span>
-
-
-<span>
-💰 269 kr
-</span>
-
-
-<span>📅 2025</span>
-
-
-</div>
-
-
-
-<p>
-
-<b>Producent</b><br>
-
-Azienda Agricola Frank Cornelissen
-
-</p>
-
-
-
-<p>
-
-<b>🍇 Druvor</b><br>
-
-Ej angivet
-
-</p>
-
-
-
-<p>
-
-<b>Smak</b><br>
-
-Fruktig smak med inslag av körsbär, örter, granatäpple, lagerblad och blodapelsin.
-
-</p>
-
-
-
-
-<h3>
-📦 Lager
-</h3>
-
-
-
-<table class="stock-table">
-
-
-<tr>
-
-<th>Butik</th>
-<th>Antal</th>
-<th>Hylla</th>
-
-</tr>
-
-
-
-
-        <tr>
-
-            <td>Växjö City</td>
-
-            <td class="empty">
-                Slut
-            </td>
-
-            <td>
-                -
-            </td>
-
-        </tr>
-
-        
-
-        <tr>
-
-            <td>Grand Samarkand</td>
-
-            <td class="empty">
-                Slut
-            </td>
-
-            <td>
-                -
-            </td>
-
-        </tr>
-
-        
-
-        <tr>
-
-            <td>Norremark</td>
-
-            <td class="good">
-                23 st
-            </td>
-
-            <td>
-                TS-00-00
-            </td>
-
-        </tr>
-
-        
-
-
-</table>
-
-
-
-<div class="buttons">
-
-
-<a href="https://www.systembolaget.se/produkt/vin/susucaru-rosato-9112801/"
-target="_blank">
-
-🛒</br>Systembolaget
-
-</a>
-
-
-
-<a href="https://www.vivino.com/sv/explore?search_term=Azienda%20Agricola%20Frank%20Cornelissen%20Susucaru%20Rosato%202025"
-target="_blank">
-
-⭐</br>Vivino
-
-</a>
-
-
-</div>
-
-
-</div>
-
-
-</article>
-
-
-
-
-
-
 <article class="wine-card mousserande-vin"
 
 data-type="Mousserande vin"
@@ -20047,6 +19938,205 @@ target="_blank">
 
 
 <a href="https://www.vivino.com/sv/explore?search_term=Costadil%C3%A0%20Costadil%C3%A0%20330%20SLM"
+target="_blank">
+
+⭐</br>Vivino
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</article>
+
+
+
+
+
+
+<article class="wine-card rosévin"
+
+data-type="Rosévin"
+
+data-name="Susucaru Rosato"
+
+data-price="269"
+
+data-vintage="2025"
+
+data-alcohol="13.5"
+
+data-0701="0"
+data-0707="0"
+data-0710="23"
+
+>
+
+<div class="image-area">
+
+    <img src="https://product-cdn.systembolaget.se/productimages/64606036/64606036_400.png" alt="">
+
+</div>
+
+
+
+<div class="wine-info">
+
+
+<h2>
+
+Susucaru
+
+Rosato
+
+</h2>
+
+
+
+<div class="tags">
+
+
+<span>
+🌍 Italien
+</span>
+
+
+<span>📍 Sicilien</span>
+
+
+<span>
+💰 269 kr
+</span>
+
+
+<span>📅 2025</span>
+
+
+</div>
+
+
+
+<p>
+
+<b>Producent</b><br>
+
+Azienda Agricola Frank Cornelissen
+
+</p>
+
+
+
+<p>
+
+<b>🍇 Druvor</b><br>
+
+Ej angivet
+
+</p>
+
+
+
+<p>
+
+<b>Smak</b><br>
+
+Fruktig smak med inslag av körsbär, örter, granatäpple, lagerblad och blodapelsin.
+
+</p>
+
+
+
+
+<h3>
+📦 Lager
+</h3>
+
+
+
+<table class="stock-table">
+
+
+<tr>
+
+<th>Butik</th>
+<th>Antal</th>
+<th>Hylla</th>
+
+</tr>
+
+
+
+
+        <tr>
+
+            <td>Växjö City</td>
+
+            <td class="empty">
+                Slut
+            </td>
+
+            <td>
+                -
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>Grand Samarkand</td>
+
+            <td class="empty">
+                Slut
+            </td>
+
+            <td>
+                -
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>Norremark</td>
+
+            <td class="good">
+                23 st
+            </td>
+
+            <td>
+                TS-00-00
+            </td>
+
+        </tr>
+
+        
+
+
+</table>
+
+
+
+<div class="buttons">
+
+
+<a href="https://www.systembolaget.se/produkt/vin/susucaru-rosato-9112801/"
+target="_blank">
+
+🛒</br>Systembolaget
+
+</a>
+
+
+
+<a href="https://www.vivino.com/sv/explore?search_term=Azienda%20Agricola%20Frank%20Cornelissen%20Susucaru%20Rosato%202025"
 target="_blank">
 
 ⭐</br>Vivino
@@ -20664,205 +20754,6 @@ target="_blank">
 
 
 
-<article class="wine-card rött-vin"
-
-data-type="Rött vin"
-
-data-name="Savigny-Les-Beaune Goudelettes Antonin Guyon"
-
-data-price="475"
-
-data-vintage="2023"
-
-data-alcohol="13.5"
-
-data-0701="0"
-data-0707="0"
-data-0710="9"
-
->
-
-<div class="image-area">
-
-    <img src="https://product-cdn.systembolaget.se/productimages/63291647/63291647_400.png" alt="">
-
-</div>
-
-
-
-<div class="wine-info">
-
-
-<h2>
-
-Savigny-Les-Beaune Goudelettes
-
-Antonin Guyon
-
-</h2>
-
-
-
-<div class="tags">
-
-
-<span>
-🌍 Frankrike
-</span>
-
-
-<span>📍 Bourgogne</span>
-
-
-<span>
-💰 475 kr
-</span>
-
-
-<span>📅 2023</span>
-
-
-</div>
-
-
-
-<p>
-
-<b>Producent</b><br>
-
-Antonin Guyon
-
-</p>
-
-
-
-<p>
-
-<b>🍇 Druvor</b><br>
-
-Pinot noir
-
-</p>
-
-
-
-<p>
-
-<b>Smak</b><br>
-
-Nyanserad, kryddig smak med fatkaraktär, inslag av skogshallon, jordgubbar, nougat, kanel och lagerblad.
-
-</p>
-
-
-
-
-<h3>
-📦 Lager
-</h3>
-
-
-
-<table class="stock-table">
-
-
-<tr>
-
-<th>Butik</th>
-<th>Antal</th>
-<th>Hylla</th>
-
-</tr>
-
-
-
-
-        <tr>
-
-            <td>Växjö City</td>
-
-            <td class="empty">
-                Slut
-            </td>
-
-            <td>
-                -
-            </td>
-
-        </tr>
-
-        
-
-        <tr>
-
-            <td>Grand Samarkand</td>
-
-            <td class="empty">
-                Slut
-            </td>
-
-            <td>
-                -
-            </td>
-
-        </tr>
-
-        
-
-        <tr>
-
-            <td>Norremark</td>
-
-            <td class="good">
-                9 st
-            </td>
-
-            <td>
-                TS-00-00
-            </td>
-
-        </tr>
-
-        
-
-
-</table>
-
-
-
-<div class="buttons">
-
-
-<a href="https://www.systembolaget.se/produkt/vin/savigny-les-beaune-goudelettes-antonin-guyon-9339501/"
-target="_blank">
-
-🛒</br>Systembolaget
-
-</a>
-
-
-
-<a href="https://www.vivino.com/sv/explore?search_term=Antonin%20Guyon%20Savigny-Les-Beaune%20Goudelettes%20Antonin%20Guyon%202023"
-target="_blank">
-
-⭐</br>Vivino
-
-</a>
-
-
-</div>
-
-
-</div>
-
-
-</article>
-
-
-
-
-
-
 <article class="wine-card mousserande-vin"
 
 data-type="Mousserande vin"
@@ -21042,6 +20933,205 @@ target="_blank">
 
 
 <a href="https://www.vivino.com/sv/explore?search_term=Weingut%20Fred%20Loimer%20Loimer%20Extra%20Brut%20Reserve"
+target="_blank">
+
+⭐</br>Vivino
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</article>
+
+
+
+
+
+
+<article class="wine-card rött-vin"
+
+data-type="Rött vin"
+
+data-name="Savigny-Les-Beaune Goudelettes Antonin Guyon"
+
+data-price="475"
+
+data-vintage="2023"
+
+data-alcohol="13.5"
+
+data-0701="0"
+data-0707="0"
+data-0710="9"
+
+>
+
+<div class="image-area">
+
+    <img src="https://product-cdn.systembolaget.se/productimages/63291647/63291647_400.png" alt="">
+
+</div>
+
+
+
+<div class="wine-info">
+
+
+<h2>
+
+Savigny-Les-Beaune Goudelettes
+
+Antonin Guyon
+
+</h2>
+
+
+
+<div class="tags">
+
+
+<span>
+🌍 Frankrike
+</span>
+
+
+<span>📍 Bourgogne</span>
+
+
+<span>
+💰 475 kr
+</span>
+
+
+<span>📅 2023</span>
+
+
+</div>
+
+
+
+<p>
+
+<b>Producent</b><br>
+
+Antonin Guyon
+
+</p>
+
+
+
+<p>
+
+<b>🍇 Druvor</b><br>
+
+Pinot noir
+
+</p>
+
+
+
+<p>
+
+<b>Smak</b><br>
+
+Nyanserad, kryddig smak med fatkaraktär, inslag av skogshallon, jordgubbar, nougat, kanel och lagerblad.
+
+</p>
+
+
+
+
+<h3>
+📦 Lager
+</h3>
+
+
+
+<table class="stock-table">
+
+
+<tr>
+
+<th>Butik</th>
+<th>Antal</th>
+<th>Hylla</th>
+
+</tr>
+
+
+
+
+        <tr>
+
+            <td>Växjö City</td>
+
+            <td class="empty">
+                Slut
+            </td>
+
+            <td>
+                -
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>Grand Samarkand</td>
+
+            <td class="empty">
+                Slut
+            </td>
+
+            <td>
+                -
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>Norremark</td>
+
+            <td class="good">
+                9 st
+            </td>
+
+            <td>
+                TS-00-00
+            </td>
+
+        </tr>
+
+        
+
+
+</table>
+
+
+
+<div class="buttons">
+
+
+<a href="https://www.systembolaget.se/produkt/vin/savigny-les-beaune-goudelettes-antonin-guyon-9339501/"
+target="_blank">
+
+🛒</br>Systembolaget
+
+</a>
+
+
+
+<a href="https://www.vivino.com/sv/explore?search_term=Antonin%20Guyon%20Savigny-Les-Beaune%20Goudelettes%20Antonin%20Guyon%202023"
 target="_blank">
 
 ⭐</br>Vivino
@@ -27629,6 +27719,205 @@ target="_blank">
 
 
 
+<article class="wine-card vitt-vin"
+
+data-type="Vitt vin"
+
+data-name="Pouilly-Fuissé La Grange Murger Roc des Boutires"
+
+data-price="379"
+
+data-vintage="2023"
+
+data-alcohol="13"
+
+data-0701="0"
+data-0707="0"
+data-0710="8"
+
+>
+
+<div class="image-area">
+
+    <img src="https://product-cdn.systembolaget.se/productimages/62230217/62230217_400.png" alt="">
+
+</div>
+
+
+
+<div class="wine-info">
+
+
+<h2>
+
+Pouilly-Fuissé La Grange Murger
+
+Roc des Boutires
+
+</h2>
+
+
+
+<div class="tags">
+
+
+<span>
+🌍 Frankrike
+</span>
+
+
+<span>📍 Bourgogne</span>
+
+
+<span>
+💰 379 kr
+</span>
+
+
+<span>📅 2023</span>
+
+
+</div>
+
+
+
+<p>
+
+<b>Producent</b><br>
+
+Roc des Boutires
+
+</p>
+
+
+
+<p>
+
+<b>🍇 Druvor</b><br>
+
+Chardonnay
+
+</p>
+
+
+
+<p>
+
+<b>Smak</b><br>
+
+Ingen smakbeskrivning
+
+</p>
+
+
+
+
+<h3>
+📦 Lager
+</h3>
+
+
+
+<table class="stock-table">
+
+
+<tr>
+
+<th>Butik</th>
+<th>Antal</th>
+<th>Hylla</th>
+
+</tr>
+
+
+
+
+        <tr>
+
+            <td>Växjö City</td>
+
+            <td class="empty">
+                Slut
+            </td>
+
+            <td>
+                -
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>Grand Samarkand</td>
+
+            <td class="empty">
+                Slut
+            </td>
+
+            <td>
+                -
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>Norremark</td>
+
+            <td class="good">
+                8 st
+            </td>
+
+            <td>
+                TS-01-01
+            </td>
+
+        </tr>
+
+        
+
+
+</table>
+
+
+
+<div class="buttons">
+
+
+<a href="https://www.systembolaget.se/produkt/vin/pouilly-fuisse-la-grange-murger-roc-des-boutires-9435301/"
+target="_blank">
+
+🛒</br>Systembolaget
+
+</a>
+
+
+
+<a href="https://www.vivino.com/sv/explore?search_term=Roc%20des%20Boutires%20Pouilly-Fuiss%C3%A9%20La%20Grange%20Murger%20Roc%20des%20Boutires%202023"
+target="_blank">
+
+⭐</br>Vivino
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</article>
+
+
+
+
+
+
 <article class="wine-card rött-vin"
 
 data-type="Rött vin"
@@ -28230,205 +28519,6 @@ target="_blank">
 
 data-type="Vitt vin"
 
-data-name="Pouilly-Fuissé La Grange Murger Roc des Boutires"
-
-data-price="379"
-
-data-vintage="2023"
-
-data-alcohol="13"
-
-data-0701="0"
-data-0707="0"
-data-0710="8"
-
->
-
-<div class="image-area">
-
-    <img src="https://product-cdn.systembolaget.se/productimages/62230217/62230217_400.png" alt="">
-
-</div>
-
-
-
-<div class="wine-info">
-
-
-<h2>
-
-Pouilly-Fuissé La Grange Murger
-
-Roc des Boutires
-
-</h2>
-
-
-
-<div class="tags">
-
-
-<span>
-🌍 Frankrike
-</span>
-
-
-<span>📍 Bourgogne</span>
-
-
-<span>
-💰 379 kr
-</span>
-
-
-<span>📅 2023</span>
-
-
-</div>
-
-
-
-<p>
-
-<b>Producent</b><br>
-
-Roc des Boutires
-
-</p>
-
-
-
-<p>
-
-<b>🍇 Druvor</b><br>
-
-Chardonnay
-
-</p>
-
-
-
-<p>
-
-<b>Smak</b><br>
-
-Ingen smakbeskrivning
-
-</p>
-
-
-
-
-<h3>
-📦 Lager
-</h3>
-
-
-
-<table class="stock-table">
-
-
-<tr>
-
-<th>Butik</th>
-<th>Antal</th>
-<th>Hylla</th>
-
-</tr>
-
-
-
-
-        <tr>
-
-            <td>Växjö City</td>
-
-            <td class="empty">
-                Slut
-            </td>
-
-            <td>
-                -
-            </td>
-
-        </tr>
-
-        
-
-        <tr>
-
-            <td>Grand Samarkand</td>
-
-            <td class="empty">
-                Slut
-            </td>
-
-            <td>
-                -
-            </td>
-
-        </tr>
-
-        
-
-        <tr>
-
-            <td>Norremark</td>
-
-            <td class="good">
-                8 st
-            </td>
-
-            <td>
-                TS-01-01
-            </td>
-
-        </tr>
-
-        
-
-
-</table>
-
-
-
-<div class="buttons">
-
-
-<a href="https://www.systembolaget.se/produkt/vin/pouilly-fuisse-la-grange-murger-roc-des-boutires-9435301/"
-target="_blank">
-
-🛒</br>Systembolaget
-
-</a>
-
-
-
-<a href="https://www.vivino.com/sv/explore?search_term=Roc%20des%20Boutires%20Pouilly-Fuiss%C3%A9%20La%20Grange%20Murger%20Roc%20des%20Boutires%202023"
-target="_blank">
-
-⭐</br>Vivino
-
-</a>
-
-
-</div>
-
-
-</div>
-
-
-</article>
-
-
-
-
-
-
-<article class="wine-card vitt-vin"
-
-data-type="Vitt vin"
-
 data-name="Marimar La Masia Chardonnay"
 
 data-price="449"
@@ -28628,205 +28718,6 @@ target="_blank">
 
 data-type="Rött vin"
 
-data-name="Jolie Laide North Coast GSM"
-
-data-price="439"
-
-data-vintage="2022"
-
-data-alcohol="13"
-
-data-0701="0"
-data-0707="0"
-data-0710="1"
-
->
-
-<div class="image-area">
-
-    <img src="https://product-cdn.systembolaget.se/productimages/46660635/46660635_400.png" alt="">
-
-</div>
-
-
-
-<div class="wine-info">
-
-
-<h2>
-
-Jolie Laide
-
-North Coast GSM
-
-</h2>
-
-
-
-<div class="tags">
-
-
-<span>
-🌍 USA
-</span>
-
-
-<span>📍 Kalifornien</span>
-
-
-<span>
-💰 439 kr
-</span>
-
-
-<span>📅 2022</span>
-
-
-</div>
-
-
-
-<p>
-
-<b>Producent</b><br>
-
-Jolie Laide
-
-</p>
-
-
-
-<p>
-
-<b>🍇 Druvor</b><br>
-
-Grenache, Mourvèdre, Syrah
-
-</p>
-
-
-
-<p>
-
-<b>Smak</b><br>
-
-Nyanserad, fruktig, något kryddig smak med fatkaraktär, björnbär, viol, körsbär, färska örter, vitpeppar och lakrits.
-
-</p>
-
-
-
-
-<h3>
-📦 Lager
-</h3>
-
-
-
-<table class="stock-table">
-
-
-<tr>
-
-<th>Butik</th>
-<th>Antal</th>
-<th>Hylla</th>
-
-</tr>
-
-
-
-
-        <tr>
-
-            <td>Växjö City</td>
-
-            <td class="empty">
-                Slut
-            </td>
-
-            <td>
-                -
-            </td>
-
-        </tr>
-
-        
-
-        <tr>
-
-            <td>Grand Samarkand</td>
-
-            <td class="empty">
-                Slut
-            </td>
-
-            <td>
-                -
-            </td>
-
-        </tr>
-
-        
-
-        <tr>
-
-            <td>Norremark</td>
-
-            <td class="low">
-                1 st
-            </td>
-
-            <td>
-                TS-00-00
-            </td>
-
-        </tr>
-
-        
-
-
-</table>
-
-
-
-<div class="buttons">
-
-
-<a href="https://www.systembolaget.se/produkt/vin/jolie-laide-north-coast-gsm-9547201/"
-target="_blank">
-
-🛒</br>Systembolaget
-
-</a>
-
-
-
-<a href="https://www.vivino.com/sv/explore?search_term=Jolie%20Laide%20Jolie%20Laide%20North%20Coast%20GSM%202022"
-target="_blank">
-
-⭐</br>Vivino
-
-</a>
-
-
-</div>
-
-
-</div>
-
-
-</article>
-
-
-
-
-
-
-<article class="wine-card rött-vin"
-
-data-type="Rött vin"
-
 data-name="Kutch McDougall Ranch Pinot Noir"
 
 data-price="669"
@@ -29002,6 +28893,205 @@ target="_blank">
 
 
 <a href="https://www.vivino.com/sv/explore?search_term=Kutch%20Wines%20Kutch%20McDougall%20Ranch%20Pinot%20Noir%202022"
+target="_blank">
+
+⭐</br>Vivino
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</article>
+
+
+
+
+
+
+<article class="wine-card rött-vin"
+
+data-type="Rött vin"
+
+data-name="Jolie Laide North Coast GSM"
+
+data-price="439"
+
+data-vintage="2022"
+
+data-alcohol="13"
+
+data-0701="0"
+data-0707="0"
+data-0710="1"
+
+>
+
+<div class="image-area">
+
+    <img src="https://product-cdn.systembolaget.se/productimages/46660635/46660635_400.png" alt="">
+
+</div>
+
+
+
+<div class="wine-info">
+
+
+<h2>
+
+Jolie Laide
+
+North Coast GSM
+
+</h2>
+
+
+
+<div class="tags">
+
+
+<span>
+🌍 USA
+</span>
+
+
+<span>📍 Kalifornien</span>
+
+
+<span>
+💰 439 kr
+</span>
+
+
+<span>📅 2022</span>
+
+
+</div>
+
+
+
+<p>
+
+<b>Producent</b><br>
+
+Jolie Laide
+
+</p>
+
+
+
+<p>
+
+<b>🍇 Druvor</b><br>
+
+Grenache, Mourvèdre, Syrah
+
+</p>
+
+
+
+<p>
+
+<b>Smak</b><br>
+
+Nyanserad, fruktig, något kryddig smak med fatkaraktär, björnbär, viol, körsbär, färska örter, vitpeppar och lakrits.
+
+</p>
+
+
+
+
+<h3>
+📦 Lager
+</h3>
+
+
+
+<table class="stock-table">
+
+
+<tr>
+
+<th>Butik</th>
+<th>Antal</th>
+<th>Hylla</th>
+
+</tr>
+
+
+
+
+        <tr>
+
+            <td>Växjö City</td>
+
+            <td class="empty">
+                Slut
+            </td>
+
+            <td>
+                -
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>Grand Samarkand</td>
+
+            <td class="empty">
+                Slut
+            </td>
+
+            <td>
+                -
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>Norremark</td>
+
+            <td class="low">
+                1 st
+            </td>
+
+            <td>
+                TS-00-00
+            </td>
+
+        </tr>
+
+        
+
+
+</table>
+
+
+
+<div class="buttons">
+
+
+<a href="https://www.systembolaget.se/produkt/vin/jolie-laide-north-coast-gsm-9547201/"
+target="_blank">
+
+🛒</br>Systembolaget
+
+</a>
+
+
+
+<a href="https://www.vivino.com/sv/explore?search_term=Jolie%20Laide%20Jolie%20Laide%20North%20Coast%20GSM%202022"
 target="_blank">
 
 ⭐</br>Vivino
