@@ -789,7 +789,7 @@ body {
         Växjöbutikerna · Tillfälligt sortiment
     </p>
     <p class="updated">
-    🕒 Senast uppdaterad: 2026-07-21 13:36
+    🕒 Senast uppdaterad: 2026-07-21 13:39
     </p>
 
     <div class="summary">
@@ -905,33 +905,57 @@ body {
     placeholder="🔍 Sök vin, producent, land eller druva..."
 >
 
-<select id="sortSelect">
+<div class="toolbar">
 
-<option value="">
-Sortera efter...
-</option>
+    <div class="search-area">
 
-<option value="name">
-Namn A–Ö
-</option>
+        <input
+            id="search"
+            placeholder="Sök vin, producent eller land..."
+        >
 
-<option value="priceAsc">
-Pris stigande
-</option>
+    </div>
 
-<option value="priceDesc">
-Pris fallande
-</option>
+    <div class="sort-menu">
 
-<option value="vintage">
-Nyaste årgång
-</option>
+        <button
+            id="sortButton"
+            class="sort-button">
 
-<option value="alcohol">
-Alkoholhalt
-</option>
+            ⇅
+            <span id="sortLabel">Namn</span>
 
-</select>
+        </button>
+
+        <div
+            id="sortOptions"
+            class="sort-options">
+
+            <button data-sort="name">
+                Namn
+            </button>
+
+            <button data-sort="priceAsc">
+                Pris ↑
+            </button>
+
+            <button data-sort="priceDesc">
+                Pris ↓
+            </button>
+
+            <button data-sort="vintage">
+                Årgång
+            </button>
+
+            <button data-sort="alcohol">
+                Alkoholhalt
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 </section>
 
@@ -5320,205 +5344,6 @@ target="_blank">
 
 
 
-<article class="wine-card vitt-vin"
-
-data-type="Vitt vin"
-
-data-name="Tua Rita Perlato del Bosco Vermentino"
-
-data-price="199"
-
-data-vintage="2025"
-
-data-alcohol="13"
-
-data-0701="9"
-data-0707="22"
-data-0710="10"
-
->
-
-<div class="image-area">
-
-    <img src="https://product-cdn.systembolaget.se/productimages/63913037/63913037_400.png" alt="">
-
-</div>
-
-
-
-<div class="wine-info">
-
-
-<h2>
-
-Tua Rita
-
-Perlato del Bosco Vermentino
-
-</h2>
-
-
-
-<div class="tags">
-
-
-<span>
-🌍 Italien
-</span>
-
-
-<span>📍 Toscana</span>
-
-
-<span>
-💰 199 kr
-</span>
-
-
-<span>📅 2025</span>
-
-
-</div>
-
-
-
-<p>
-
-<b>Producent</b><br>
-
-Tua Rita
-
-</p>
-
-
-
-<p>
-
-<b>🍇 Druvor</b><br>
-
-Vermentino
-
-</p>
-
-
-
-<p>
-
-<b>Smak</b><br>
-
-Fruktig, mycket frisk smak med inslag av gula plommon, färska örter, honungsmelon och grapefrukt.
-
-</p>
-
-
-
-
-<h3>
-📦 Lager
-</h3>
-
-
-
-<table class="stock-table">
-
-
-<tr>
-
-<th>Butik</th>
-<th>Antal</th>
-<th>Hylla</th>
-
-</tr>
-
-
-
-
-        <tr>
-
-            <td>Växjö City</td>
-
-            <td class="good">
-                9 st
-            </td>
-
-            <td>
-                -
-            </td>
-
-        </tr>
-
-        
-
-        <tr>
-
-            <td>Grand Samarkand</td>
-
-            <td class="good">
-                22 st
-            </td>
-
-            <td>
-                TS-00-00
-            </td>
-
-        </tr>
-
-        
-
-        <tr>
-
-            <td>Norremark</td>
-
-            <td class="good">
-                10 st
-            </td>
-
-            <td>
-                TS-00-00
-            </td>
-
-        </tr>
-
-        
-
-
-</table>
-
-
-
-<div class="buttons">
-
-
-<a href="https://www.systembolaget.se/produkt/vin/tua-rita-perlato-del-bosco-vermentino-9570701/"
-target="_blank">
-
-🛒</br>Systembolaget
-
-</a>
-
-
-
-<a href="https://www.vivino.com/sv/explore?search_term=Tua%20Rita%20Tua%20Rita%20Perlato%20del%20Bosco%20Vermentino%202025"
-target="_blank">
-
-⭐</br>Vivino
-
-</a>
-
-
-</div>
-
-
-</div>
-
-
-</article>
-
-
-
-
-
-
 <article class="wine-card rött-vin"
 
 data-type="Rött vin"
@@ -5698,6 +5523,205 @@ target="_blank">
 
 
 <a href="https://www.vivino.com/sv/explore?search_term=4Kilos%204Kilos%2012%20Volts%202023"
+target="_blank">
+
+⭐</br>Vivino
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</article>
+
+
+
+
+
+
+<article class="wine-card vitt-vin"
+
+data-type="Vitt vin"
+
+data-name="Tua Rita Perlato del Bosco Vermentino"
+
+data-price="199"
+
+data-vintage="2025"
+
+data-alcohol="13"
+
+data-0701="9"
+data-0707="22"
+data-0710="10"
+
+>
+
+<div class="image-area">
+
+    <img src="https://product-cdn.systembolaget.se/productimages/63913037/63913037_400.png" alt="">
+
+</div>
+
+
+
+<div class="wine-info">
+
+
+<h2>
+
+Tua Rita
+
+Perlato del Bosco Vermentino
+
+</h2>
+
+
+
+<div class="tags">
+
+
+<span>
+🌍 Italien
+</span>
+
+
+<span>📍 Toscana</span>
+
+
+<span>
+💰 199 kr
+</span>
+
+
+<span>📅 2025</span>
+
+
+</div>
+
+
+
+<p>
+
+<b>Producent</b><br>
+
+Tua Rita
+
+</p>
+
+
+
+<p>
+
+<b>🍇 Druvor</b><br>
+
+Vermentino
+
+</p>
+
+
+
+<p>
+
+<b>Smak</b><br>
+
+Fruktig, mycket frisk smak med inslag av gula plommon, färska örter, honungsmelon och grapefrukt.
+
+</p>
+
+
+
+
+<h3>
+📦 Lager
+</h3>
+
+
+
+<table class="stock-table">
+
+
+<tr>
+
+<th>Butik</th>
+<th>Antal</th>
+<th>Hylla</th>
+
+</tr>
+
+
+
+
+        <tr>
+
+            <td>Växjö City</td>
+
+            <td class="good">
+                9 st
+            </td>
+
+            <td>
+                -
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>Grand Samarkand</td>
+
+            <td class="good">
+                22 st
+            </td>
+
+            <td>
+                TS-00-00
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>Norremark</td>
+
+            <td class="good">
+                10 st
+            </td>
+
+            <td>
+                TS-00-00
+            </td>
+
+        </tr>
+
+        
+
+
+</table>
+
+
+
+<div class="buttons">
+
+
+<a href="https://www.systembolaget.se/produkt/vin/tua-rita-perlato-del-bosco-vermentino-9570701/"
+target="_blank">
+
+🛒</br>Systembolaget
+
+</a>
+
+
+
+<a href="https://www.vivino.com/sv/explore?search_term=Tua%20Rita%20Tua%20Rita%20Perlato%20del%20Bosco%20Vermentino%202025"
 target="_blank">
 
 ⭐</br>Vivino
@@ -22832,6 +22856,205 @@ target="_blank">
 
 
 
+<article class="wine-card vitt-vin"
+
+data-type="Vitt vin"
+
+data-name="Mandolás Oremus"
+
+data-price="269"
+
+data-vintage="2023"
+
+data-alcohol="13"
+
+data-0701="0"
+data-0707="0"
+data-0710="6"
+
+>
+
+<div class="image-area">
+
+    <img src="https://product-cdn.systembolaget.se/productimages/61445952/61445952_400.png" alt="">
+
+</div>
+
+
+
+<div class="wine-info">
+
+
+<h2>
+
+Mandolás
+
+Oremus
+
+</h2>
+
+
+
+<div class="tags">
+
+
+<span>
+🌍 Ungern
+</span>
+
+
+<span>📍 Tokaj</span>
+
+
+<span>
+💰 269 kr
+</span>
+
+
+<span>📅 2023</span>
+
+
+</div>
+
+
+
+<p>
+
+<b>Producent</b><br>
+
+Tokaj Oremus
+
+</p>
+
+
+
+<p>
+
+<b>🍇 Druvor</b><br>
+
+Furmint
+
+</p>
+
+
+
+<p>
+
+<b>Smak</b><br>
+
+Ingen smakbeskrivning
+
+</p>
+
+
+
+
+<h3>
+📦 Lager
+</h3>
+
+
+
+<table class="stock-table">
+
+
+<tr>
+
+<th>Butik</th>
+<th>Antal</th>
+<th>Hylla</th>
+
+</tr>
+
+
+
+
+        <tr>
+
+            <td>Växjö City</td>
+
+            <td class="empty">
+                Slut
+            </td>
+
+            <td>
+                -
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>Grand Samarkand</td>
+
+            <td class="empty">
+                Slut
+            </td>
+
+            <td>
+                -
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>Norremark</td>
+
+            <td class="good">
+                6 st
+            </td>
+
+            <td>
+                TS-00-00
+            </td>
+
+        </tr>
+
+        
+
+
+</table>
+
+
+
+<div class="buttons">
+
+
+<a href="https://www.systembolaget.se/produkt/vin/mandolas-oremus-9210001/"
+target="_blank">
+
+🛒</br>Systembolaget
+
+</a>
+
+
+
+<a href="https://www.vivino.com/sv/explore?search_term=Tokaj%20Oremus%20Mandol%C3%A1s%20Oremus%202023"
+target="_blank">
+
+⭐</br>Vivino
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</article>
+
+
+
+
+
+
 <article class="wine-card rosévin"
 
 data-type="Rosévin"
@@ -23210,205 +23433,6 @@ target="_blank">
 
 
 <a href="https://www.vivino.com/sv/explore?search_term=Bodegas%20Lanzaga%20-%20Telmo%20Rodriguez%20Lanzaga%202021"
-target="_blank">
-
-⭐</br>Vivino
-
-</a>
-
-
-</div>
-
-
-</div>
-
-
-</article>
-
-
-
-
-
-
-<article class="wine-card vitt-vin"
-
-data-type="Vitt vin"
-
-data-name="Mandolás Oremus"
-
-data-price="269"
-
-data-vintage="2023"
-
-data-alcohol="13"
-
-data-0701="0"
-data-0707="0"
-data-0710="6"
-
->
-
-<div class="image-area">
-
-    <img src="https://product-cdn.systembolaget.se/productimages/61445952/61445952_400.png" alt="">
-
-</div>
-
-
-
-<div class="wine-info">
-
-
-<h2>
-
-Mandolás
-
-Oremus
-
-</h2>
-
-
-
-<div class="tags">
-
-
-<span>
-🌍 Ungern
-</span>
-
-
-<span>📍 Tokaj</span>
-
-
-<span>
-💰 269 kr
-</span>
-
-
-<span>📅 2023</span>
-
-
-</div>
-
-
-
-<p>
-
-<b>Producent</b><br>
-
-Tokaj Oremus
-
-</p>
-
-
-
-<p>
-
-<b>🍇 Druvor</b><br>
-
-Furmint
-
-</p>
-
-
-
-<p>
-
-<b>Smak</b><br>
-
-Ingen smakbeskrivning
-
-</p>
-
-
-
-
-<h3>
-📦 Lager
-</h3>
-
-
-
-<table class="stock-table">
-
-
-<tr>
-
-<th>Butik</th>
-<th>Antal</th>
-<th>Hylla</th>
-
-</tr>
-
-
-
-
-        <tr>
-
-            <td>Växjö City</td>
-
-            <td class="empty">
-                Slut
-            </td>
-
-            <td>
-                -
-            </td>
-
-        </tr>
-
-        
-
-        <tr>
-
-            <td>Grand Samarkand</td>
-
-            <td class="empty">
-                Slut
-            </td>
-
-            <td>
-                -
-            </td>
-
-        </tr>
-
-        
-
-        <tr>
-
-            <td>Norremark</td>
-
-            <td class="good">
-                6 st
-            </td>
-
-            <td>
-                TS-00-00
-            </td>
-
-        </tr>
-
-        
-
-
-</table>
-
-
-
-<div class="buttons">
-
-
-<a href="https://www.systembolaget.se/produkt/vin/mandolas-oremus-9210001/"
-target="_blank">
-
-🛒</br>Systembolaget
-
-</a>
-
-
-
-<a href="https://www.vivino.com/sv/explore?search_term=Tokaj%20Oremus%20Mandol%C3%A1s%20Oremus%202023"
 target="_blank">
 
 ⭐</br>Vivino
@@ -27807,205 +27831,6 @@ target="_blank">
 
 
 
-<article class="wine-card vitt-vin"
-
-data-type="Vitt vin"
-
-data-name="Pouilly-Fuissé La Grange Murger Roc des Boutires"
-
-data-price="379"
-
-data-vintage="2023"
-
-data-alcohol="13"
-
-data-0701="0"
-data-0707="0"
-data-0710="8"
-
->
-
-<div class="image-area">
-
-    <img src="https://product-cdn.systembolaget.se/productimages/62230217/62230217_400.png" alt="">
-
-</div>
-
-
-
-<div class="wine-info">
-
-
-<h2>
-
-Pouilly-Fuissé La Grange Murger
-
-Roc des Boutires
-
-</h2>
-
-
-
-<div class="tags">
-
-
-<span>
-🌍 Frankrike
-</span>
-
-
-<span>📍 Bourgogne</span>
-
-
-<span>
-💰 379 kr
-</span>
-
-
-<span>📅 2023</span>
-
-
-</div>
-
-
-
-<p>
-
-<b>Producent</b><br>
-
-Roc des Boutires
-
-</p>
-
-
-
-<p>
-
-<b>🍇 Druvor</b><br>
-
-Chardonnay
-
-</p>
-
-
-
-<p>
-
-<b>Smak</b><br>
-
-Ingen smakbeskrivning
-
-</p>
-
-
-
-
-<h3>
-📦 Lager
-</h3>
-
-
-
-<table class="stock-table">
-
-
-<tr>
-
-<th>Butik</th>
-<th>Antal</th>
-<th>Hylla</th>
-
-</tr>
-
-
-
-
-        <tr>
-
-            <td>Växjö City</td>
-
-            <td class="empty">
-                Slut
-            </td>
-
-            <td>
-                -
-            </td>
-
-        </tr>
-
-        
-
-        <tr>
-
-            <td>Grand Samarkand</td>
-
-            <td class="empty">
-                Slut
-            </td>
-
-            <td>
-                -
-            </td>
-
-        </tr>
-
-        
-
-        <tr>
-
-            <td>Norremark</td>
-
-            <td class="good">
-                8 st
-            </td>
-
-            <td>
-                TS-01-01
-            </td>
-
-        </tr>
-
-        
-
-
-</table>
-
-
-
-<div class="buttons">
-
-
-<a href="https://www.systembolaget.se/produkt/vin/pouilly-fuisse-la-grange-murger-roc-des-boutires-9435301/"
-target="_blank">
-
-🛒</br>Systembolaget
-
-</a>
-
-
-
-<a href="https://www.vivino.com/sv/explore?search_term=Roc%20des%20Boutires%20Pouilly-Fuiss%C3%A9%20La%20Grange%20Murger%20Roc%20des%20Boutires%202023"
-target="_blank">
-
-⭐</br>Vivino
-
-</a>
-
-
-</div>
-
-
-</div>
-
-
-</article>
-
-
-
-
-
-
 <article class="wine-card rött-vin"
 
 data-type="Rött vin"
@@ -28583,6 +28408,205 @@ target="_blank">
 
 
 <a href="https://www.vivino.com/sv/explore?search_term=Savage%20Wines%20Savage%20White%202024"
+target="_blank">
+
+⭐</br>Vivino
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</article>
+
+
+
+
+
+
+<article class="wine-card vitt-vin"
+
+data-type="Vitt vin"
+
+data-name="Pouilly-Fuissé La Grange Murger Roc des Boutires"
+
+data-price="379"
+
+data-vintage="2023"
+
+data-alcohol="13"
+
+data-0701="0"
+data-0707="0"
+data-0710="8"
+
+>
+
+<div class="image-area">
+
+    <img src="https://product-cdn.systembolaget.se/productimages/62230217/62230217_400.png" alt="">
+
+</div>
+
+
+
+<div class="wine-info">
+
+
+<h2>
+
+Pouilly-Fuissé La Grange Murger
+
+Roc des Boutires
+
+</h2>
+
+
+
+<div class="tags">
+
+
+<span>
+🌍 Frankrike
+</span>
+
+
+<span>📍 Bourgogne</span>
+
+
+<span>
+💰 379 kr
+</span>
+
+
+<span>📅 2023</span>
+
+
+</div>
+
+
+
+<p>
+
+<b>Producent</b><br>
+
+Roc des Boutires
+
+</p>
+
+
+
+<p>
+
+<b>🍇 Druvor</b><br>
+
+Chardonnay
+
+</p>
+
+
+
+<p>
+
+<b>Smak</b><br>
+
+Ingen smakbeskrivning
+
+</p>
+
+
+
+
+<h3>
+📦 Lager
+</h3>
+
+
+
+<table class="stock-table">
+
+
+<tr>
+
+<th>Butik</th>
+<th>Antal</th>
+<th>Hylla</th>
+
+</tr>
+
+
+
+
+        <tr>
+
+            <td>Växjö City</td>
+
+            <td class="empty">
+                Slut
+            </td>
+
+            <td>
+                -
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>Grand Samarkand</td>
+
+            <td class="empty">
+                Slut
+            </td>
+
+            <td>
+                -
+            </td>
+
+        </tr>
+
+        
+
+        <tr>
+
+            <td>Norremark</td>
+
+            <td class="good">
+                8 st
+            </td>
+
+            <td>
+                TS-01-01
+            </td>
+
+        </tr>
+
+        
+
+
+</table>
+
+
+
+<div class="buttons">
+
+
+<a href="https://www.systembolaget.se/produkt/vin/pouilly-fuisse-la-grange-murger-roc-des-boutires-9435301/"
+target="_blank">
+
+🛒</br>Systembolaget
+
+</a>
+
+
+
+<a href="https://www.vivino.com/sv/explore?search_term=Roc%20des%20Boutires%20Pouilly-Fuiss%C3%A9%20La%20Grange%20Murger%20Roc%20des%20Boutires%202023"
 target="_blank">
 
 ⭐</br>Vivino
