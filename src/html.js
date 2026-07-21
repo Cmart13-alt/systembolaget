@@ -91,7 +91,7 @@ ${css}
         data-typefilter="Alla"
         onclick="showAll()">
 
-        <strong>${products.length}</strong>
+        <strong id="count-type-Alla">>${products.length}</strong>
         <span>🍷 Alla viner</span>
 
         </div>
@@ -100,7 +100,7 @@ ${css}
         data-typefilter="Rött vin"
         onclick="filterType('Rött vin')">
 
-        <strong>${countWineType(products,"Rött vin")}</strong>
+        <strong id="count-type-Rött vin">${countWineType(products,"Rött vin")}</strong>
         <span>🍷 Röda viner</span>
 
         </div>
@@ -110,7 +110,7 @@ ${css}
         data-typefilter="Vitt vin"
         onclick="filterType('Vitt vin')">
 
-        <strong>${countWineType(products,"Vitt vin")}</strong>
+        <strong id="count-type-Vitt vin">${countWineType(products,"Vitt vin")}</strong>
         <span>🥂 Vita viner</span>
 
         </div>
@@ -120,7 +120,7 @@ ${css}
         data-typefilter="Rosévin"
         onclick="filterType('Rosévin')">
 
-        <strong>${countWineType(products,"Rosévin")}</strong>
+        <strong id="count-type-Rosévin">${countWineType(products,"Rosévin")}</strong>
         <span>🌸 Rosé</span>
 
         </div>
@@ -130,7 +130,7 @@ ${css}
         data-typefilter="Mousserande vin"
         onclick="filterType('Mousserande vin')">
 
-        <strong>${countWineType(products,"Mousserande vin")}</strong>
+        <strong id="count-type-Mousserande vin">${countWineType(products,"Mousserande vin")}</strong>
         <span>🍾 Mousserande</span>
 
         </div>
@@ -151,7 +151,7 @@ ${css}
         data-store="Alla"
         onclick="filterStore('Alla')">
 
-            <strong>${products.length}</strong>
+            <strong id="count-store-Alla">${products.length}</strong>
             <span>🏬 Alla butiker</span>
 
         </div>
@@ -160,7 +160,7 @@ ${css}
         data-store="0701"
         onclick="filterStore('0701')">
 
-            <strong>${countStore(products,"0701")}</strong>
+            <strong id="count-store-0701">${countStore(products,"0701")}</strong>
             <span>🏬 Växjö City</span>
 
         </div>
@@ -169,7 +169,7 @@ ${css}
         data-store="0707"
         onclick="filterStore('0707')">
 
-            <strong>${countStore(products,"0707")}</strong>
+            <strong id="count-store-0707">${countStore(products,"0707")}</strong>
             <span>🏬 Grand Samarkand</span>
 
         </div>
@@ -178,7 +178,7 @@ ${css}
         data-store="0710"
         onclick="filterStore('0710')">
 
-            <strong>${countStore(products,"0710")}</strong>
+            <strong id="count-store-0710">${countStore(products,"0710")}</strong>
             <span>🏬 Norremark</span>
 
         </div>
