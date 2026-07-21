@@ -64,7 +64,7 @@ async function main() {
     const filename =
         path.join(
             __dirname,
-            "docs/rapport.html"
+            "docs/index.html"
         );
 
 
@@ -78,7 +78,7 @@ async function main() {
 
 
     console.log(
-        "rapport.html skapad"
+        "index.html skapad"
     );
 
 
