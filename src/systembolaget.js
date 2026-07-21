@@ -53,33 +53,46 @@ async function main() {
 
 
 
-    /*
-       Skapa HTML
-    */
+        /*
+        Skapa HTML
+        */
 
+        const html = generateReport(products, stores);
 
-    const html = generateReport(products, stores);
+        const docsDir = path.join(
+            __dirname,
+            "..",
+            "docs"
+        );
 
+        // Skriv index.html
+        fs.writeFileSync(
+            path.join(docsDir, "index.html"),
+            html,
+            "utf8"
+        );
 
-    const filename = path.join(
-        __dirname,
-        "..",
-        "docs",
-        "index.html"
-    );
+        // Skapa service worker
+        const cacheName = `vinguide-${Date.now()}`;
 
+        const swTemplate = fs.readFileSync(
+            path.join(__dirname, "sw.js"),
+            "utf8"
+        );
 
-    fs.writeFileSync(
-        filename,
-        html,
-        "utf8"
-    );
+        const sw = swTemplate.replace(
+            "__CACHE_NAME__",
+            cacheName
+        );
 
+        fs.writeFileSync(
+            path.join(docsDir, "sw.js"),
+            sw,
+            "utf8"
+        );
 
-
-    console.log(
-        "index.html skapad"
-    );
+        console.log("index.html skapad");
+        console.log("sw.js skapad");
 
 
 

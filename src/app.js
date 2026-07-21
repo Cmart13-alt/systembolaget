@@ -248,3 +248,26 @@ document
 showAll();
 filterStore("Alla");
 
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener("load", async () => {
+
+        try {
+
+            const registration =
+                await navigator.serviceWorker.register("./sw.js");
+
+            console.log("Service Worker registrerad.");
+
+            registration.update();
+
+        }
+        catch (err) {
+
+            console.error(err);
+
+        }
+
+    });
+
+}
