@@ -20,17 +20,20 @@ function createSystembolagetLink(product) {
 
 function createVivinoLink(product) {
 
-    const query = [
-        product.producerName,
-        product.productNameBold,
-        product.productNameThin,
-        product.vintage
-    ]
-        .filter(Boolean)
-        .join(" ");
+    let query = product.productNameBold;
 
-    return `https://www.google.com/search?q=${encodeURIComponent(query + " site:vivino.com")}`;
+    if (product.productNameThin) {
+        query += " " + product.productNameThin;
+    }
 
+    if (product.producerName &&
+        !query.toLowerCase().includes(product.producerName.toLowerCase())) {
+        query += " " + product.producerName;
+    }
+
+    query += " site:vivino.com";
+
+    return `https://www.google.com/search?q=${encodeURIComponent(query)}`;
 }
 
 
