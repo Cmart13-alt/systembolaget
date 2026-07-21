@@ -485,7 +485,7 @@ target="_blank">
 <a href="${product.vivino || "#"}"
 target="_blank">
 
-⭐ Vivino
+⭐ Sök på Vivino
 
 </a>
 
