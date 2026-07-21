@@ -402,7 +402,7 @@ ${product.originLevel1
     ? `<span>📍 ${product.originLevel1}</span>`
     : ""}
 
-<span>
+<span class="emoji">
 🤪 ${product.alcoholPercentage} %
 </span>    
 
