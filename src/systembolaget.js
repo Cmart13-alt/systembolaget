@@ -83,17 +83,6 @@ async function main() {
 
 
 
-    /*
-       Öppna automatiskt
-    */
-
-
-    exec(
-        `"${filename}"`
-    );
-
-
-
 }
 
 
