@@ -143,6 +143,101 @@ function applyFilters(){
 
 
     });
+    
+    updateSummary();
+
+}
+
+function updateSummary() {
+
+    const visible =
+        [...document.querySelectorAll(".wine-card")]
+            .filter(card => card.style.display !== "none");
+
+    //
+    // Butiker
+    //
+
+    document
+        .querySelectorAll("[data-store]")
+        .forEach(box => {
+
+            const store = box.dataset.store;
+
+            let count;
+
+            if (store === "Alla") {
+
+                count = visible.length;
+
+            } else {
+
+                count = visible.filter(card =>
+                    Number(card.dataset[store]) > 0
+                ).length;
+
+            }
+
+            const strong =
+                document.getElementById(
+                    `count-store-${store}`
+                );
+
+            if (strong)
+                strong.textContent = count;
+
+        });
+
+    //
+    // Vintyper
+    //
+
+    const mainTypes = [
+        "Rött vin",
+        "Vitt vin",
+        "Rosévin",
+        "Mousserande vin"
+    ];
+
+    document
+        .querySelectorAll("[data-typefilter]")
+        .forEach(box => {
+
+            const type = box.dataset.typefilter;
+
+            let count;
+
+            if (type === "Alla") {
+
+                count = visible.length;
+
+            }
+            else if (type === "Övriga") {
+
+                count =
+                    visible.filter(card =>
+                        !mainTypes.includes(card.dataset.type)
+                    ).length;
+
+            }
+            else {
+
+                count =
+                    visible.filter(card =>
+                        card.dataset.type === type
+                    ).length;
+
+            }
+
+            const strong =
+                document.getElementById(
+                    `count-type-${type}`
+                );
+
+            if (strong)
+                strong.textContent = count;
+
+        });
 
 }
 
