@@ -20,33 +20,18 @@ function createSystembolagetLink(product) {
 
 function createVivinoLink(product) {
 
-
-    const producer = (product.producerName ?? "")
-        .replace(/\b(SRL|AB|Ltd|SAS|SA|SPA|LLC|Inc)\b/gi, "")
-        .trim();
-
-
     const query = [
-
-        producer,
-
+        product.producerName,
         product.productNameBold,
-
-        product.productNameThin ?? "",
-
-        product.vintage ?? ""
-
+        product.productNameThin,
+        product.vintage
     ]
-    .filter(Boolean)
-    .join(" ");
+        .filter(Boolean)
+        .join(" ");
 
-
-
-    return `https://www.vivino.com/sv/explore?search_term=${encodeURIComponent(query)}`;
+    return `https://www.google.com/search?q=${encodeURIComponent(query + " site:vivino.com")}`;
 
 }
-
-
 
 
 function escapeHtml(text) {
