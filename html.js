@@ -1,0 +1,534 @@
+const fs = require("fs");
+const path = require("path");
+
+
+function generateReport(products, stores) {
+
+
+    const css = fs.readFileSync(
+        path.join(__dirname, "style.css"),
+        "utf8"
+    );
+
+
+    const js = fs.readFileSync(
+        path.join(__dirname, "app.js"),
+        "utf8"
+    );
+    const now = new Date();
+
+    const updated =
+        now.toLocaleDateString("sv-SE", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit"
+        })
+        + " "
+        +
+        now.toLocaleTimeString("sv-SE", {
+            hour: "2-digit",
+            minute: "2-digit"
+        });
+
+    const cards = products
+        .map(product => createProductCard(product, stores))
+        .join("\n");
+
+
+    return `
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tillfälligt sortiment – Växjö</title>
+
+
+<style>
+
+${css}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <h1>🍷 Tillfälligt sortiment</h1>
+
+    <p>
+        Växjöbutikerna · Tillfälligt sortiment
+    </p>
+    <p class="updated">
+    🕒 Senast uppdaterad: ${updated}
+    </p>
+
+    <div class="summary">
+
+       
+        
+        <div class="summary-box filter"
+        data-typefilter="Alla"
+        onclick="showAll()">
+
+        <strong>${products.length}</strong>
+        <span>🍷 Alla viner</span>
+
+        </div>
+
+        <div class="summary-box filter"
+        data-typefilter="Rött vin"
+        onclick="filterType('Rött vin')">
+
+        <strong>${countWineType(products,"Rött vin")}</strong>
+        <span>🍷 Röda viner</span>
+
+        </div>
+
+
+        <div class="summary-box filter"
+        data-typefilter="Vitt vin"
+        onclick="filterType('Vitt vin')">
+
+        <strong>${countWineType(products,"Vitt vin")}</strong>
+        <span>🥂 Vita viner</span>
+
+        </div>
+
+
+        <div class="summary-box filter"
+        data-typefilter="Rosévin"
+        onclick="filterType('Rosévin')">
+
+        <strong>${countWineType(products,"Rosévin")}</strong>
+        <span>🌸 Rosé</span>
+
+        </div>
+
+
+        <div class="summary-box filter"
+        data-typefilter="Mousserande vin"
+        onclick="filterType('Mousserande vin')">
+
+        <strong>${countWineType(products,"Mousserande vin")}</strong>
+        <span>🍾 Mousserande</span>
+
+        </div>
+        <div class="summary-box filter"
+        data-typefilter="Övriga"
+        onclick="filterType('Övriga')">
+
+        <strong>${countWineType(products,"Övriga")}</strong>
+        <span>🍷 Övriga</span>
+
+        </div>
+
+
+    </div>
+    <div class="summary store-summary">
+
+        <div class="summary-box filter"
+        data-store="Alla"
+        onclick="filterStore('Alla')">
+
+            <strong>${products.length}</strong>
+            <span>🏬 Alla butiker</span>
+
+        </div>
+
+        <div class="summary-box filter"
+        data-store="0701"
+        onclick="filterStore('0701')">
+
+            <strong>${countStore(products,"0701")}</strong>
+            <span>🏬 Växjö City</span>
+
+        </div>
+
+        <div class="summary-box filter"
+        data-store="0707"
+        onclick="filterStore('0707')">
+
+            <strong>${countStore(products,"0707")}</strong>
+            <span>🏬 Grand Samarkand</span>
+
+        </div>
+
+        <div class="summary-box filter"
+        data-store="0710"
+        onclick="filterStore('0710')">
+
+            <strong>${countStore(products,"0710")}</strong>
+            <span>🏬 Norremark</span>
+
+        </div>
+
+    </div>    
+
+</header>
+
+
+<section class="search-area">
+
+<input 
+    id="search"
+    type="text"
+    placeholder="🔍 Sök vin, producent, land eller druva..."
+>
+
+<select id="sortSelect">
+
+<option value="name">
+Namn A–Ö
+</option>
+
+<option value="priceAsc">
+Pris stigande
+</option>
+
+<option value="priceDesc">
+Pris fallande
+</option>
+
+<option value="vintage">
+Nyaste årgång
+</option>
+
+<option value="alcohol">
+Alkoholhalt
+</option>
+
+</select>
+
+</section>
+
+
+<main class="products" id="products">
+
+${cards}
+
+</main>
+
+
+<script>
+
+${js}
+
+</script>
+
+
+</body>
+
+</html>
+`;
+
+}
+
+
+
+function createProductCard(product, stores) {
+
+
+    const image =
+        product.images?.[0]?.imageUrl
+        ? `${product.images[0].imageUrl}_400.png`
+        : "";
+
+
+    const grapes =
+        product.grapes?.join(", ") || "Ej angivet";
+
+
+    const wineType =
+        product.categoryLevel2
+        ?.toLowerCase()
+        .replaceAll(" ","-") || "other";
+
+
+
+    const stockRows = stores.map(store => {
+
+
+        const stock = product.stock?.[store.id] || {
+
+            amount:0,
+            shelf:""
+
+        };
+
+
+        let status;
+
+
+        if(stock.amount > 5){
+
+            status = "good";
+
+        } 
+        else if(stock.amount > 0){
+
+            status = "low";
+
+        }
+        else {
+
+            status = "empty";
+
+        }
+
+
+
+        return `
+
+        <tr>
+
+            <td>${store.name}</td>
+
+            <td class="${status}">
+                ${stock.amount > 0 
+                    ? stock.amount + " st"
+                    : "Slut"}
+            </td>
+
+            <td>
+                ${stock.shelf || "-"}
+            </td>
+
+        </tr>
+
+        `;
+
+
+    }).join("");
+
+
+
+    return `
+
+
+<article class="wine-card ${wineType}"
+
+data-type="${product.categoryLevel2}"
+
+data-name="${product.productNameBold} ${product.productNameThin ?? ""}"
+
+data-price="${product.price}"
+
+data-vintage="${product.vintage ?? 0}"
+
+data-alcohol="${product.alcoholPercentage}"
+
+data-0701="${product.stock["0701"]?.amount ?? 0}"
+data-0707="${product.stock["0707"]?.amount ?? 0}"
+data-0710="${product.stock["0710"]?.amount ?? 0}"
+
+>
+
+<div class="image-area">
+
+    <img src="${image}" alt="">
+
+</div>
+
+
+
+<div class="wine-info">
+
+
+<h2>
+
+${product.productNameBold}
+
+${product.productNameThin ?? ""}
+
+</h2>
+
+
+
+<div class="tags">
+
+
+<span>
+🌍 ${product.country}
+</span>
+
+
+${product.originLevel1 
+    ? `<span>📍 ${product.originLevel1}</span>`
+    : ""}
+
+
+<span>
+💰 ${product.price} kr
+</span>
+
+
+${product.vintage
+    ? `<span>📅 ${product.vintage}</span>`
+    : ""}
+
+
+</div>
+
+
+
+<p>
+
+<b>Producent</b><br>
+
+${product.producerName}
+
+</p>
+
+
+
+<p>
+
+<b>🍇 Druvor</b><br>
+
+${grapes}
+
+</p>
+
+
+
+<p>
+
+<b>Smak</b><br>
+
+${product.taste || "Ingen smakbeskrivning"}
+
+</p>
+
+
+
+
+<h3>
+📦 Lager
+</h3>
+
+
+
+<table class="stock-table">
+
+
+<tr>
+
+<th>Butik</th>
+<th>Antal</th>
+<th>Hylla</th>
+
+</tr>
+
+
+${stockRows}
+
+
+</table>
+
+
+
+<div class="buttons">
+
+
+<a href="${product.systembolaget || "#"}"
+target="_blank">
+
+🛒</br>Systembolaget
+
+</a>
+
+
+
+<a href="${product.vivino || "#"}"
+target="_blank">
+
+⭐</br>Vivino
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</article>
+
+
+`;
+
+}
+
+
+
+
+function countCountries(products){
+
+    return new Set(
+        products.map(p => p.country)
+    ).size;
+
+}
+
+
+
+function countProducers(products){
+
+    return new Set(
+        products.map(p => p.producerName)
+    ).size;
+
+}
+
+function countWineType(products,type){
+
+    const mainTypes = [
+        "Rött vin",
+        "Vitt vin",
+        "Rosévin",
+        "Mousserande vin"
+    ];
+
+
+    if(type === "Övriga"){
+
+        return products.filter(p =>
+            !mainTypes.includes(p.categoryLevel2)
+        ).length;
+
+    }
+
+
+    return products.filter(p =>
+        p.categoryLevel2 === type
+    ).length;
+
+}
+
+function countStore(products, storeId){
+
+    return products.filter(product => {
+
+        const stock =
+            product.stock?.[storeId]?.amount || 0;
+
+        return stock > 0;
+
+    }).length;
+
+}
+
+module.exports = {
+
+    generateReport
+
+};

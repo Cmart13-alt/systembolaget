@@ -1,0 +1,572 @@
+/* ================================
+   Grundlayout
+================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin: 0;
+    padding: 40px;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        #f4f6f4;
+
+    color:
+        #222;
+
+}
+
+
+
+/* ================================
+   Header
+================================ */
+
+
+.header {
+
+    max-width: 1200px;
+
+    margin: 0 auto 30px auto;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0b6b3a,
+            #084d2b
+        );
+
+    color:white;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.15);
+
+}
+
+
+.header h1 {
+
+    margin:0;
+
+    font-size:36px;
+
+}
+
+
+.header p {
+
+    margin-top:8px;
+
+    opacity:.9;
+
+}
+
+.updated {
+
+    margin-top:15px;
+
+    font-size:14px;
+
+    opacity:.85;
+
+}
+
+
+/* ================================
+   Statistik
+================================ */
+
+
+.summary {
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:25px;
+
+    flex-wrap:wrap;
+
+}
+
+
+
+.summary-box {
+
+    background:
+        rgba(255,255,255,.15);
+
+    padding:15px 25px;
+
+    border-radius:12px;
+
+    min-width:120px;
+
+    text-align:center;
+
+}
+
+
+
+.summary-box strong {
+
+    display:block;
+
+    font-size:28px;
+
+}
+
+
+.summary-box span {
+
+    font-size:14px;
+
+}
+
+.summary-box.active{
+
+    background:#831e34;
+
+    color:#ffffff;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+
+    transform:translateY(-2px);
+
+    border:2px solid #ffffff;
+
+}
+
+.filter{
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.filter:hover{
+
+    transform:translateY(-3px);
+
+    background:rgba(255,255,255,.25);
+
+}
+
+
+/* ================================
+   Sökfält
+================================ */
+
+
+.search-area {
+
+    max-width:1200px;
+
+    margin:0 auto 30px auto;
+
+}
+
+
+
+#search {
+
+    width:100%;
+
+    padding:18px 22px;
+
+    font-size:17px;
+
+    border-radius:14px;
+
+    border:
+
+        1px solid #ddd;
+
+    background:white;
+
+    box-shadow:
+
+        0 3px 10px rgba(0,0,0,.08);
+
+}
+
+
+
+#search:focus {
+
+    outline:none;
+
+    border-color:#0b6b3a;
+
+}
+
+
+
+
+/* ================================
+   Produktgrid
+================================ */
+
+
+.products {
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(
+            auto-fit,
+            minmax(380px,1fr)
+        );
+
+    gap:25px;
+
+}
+
+
+
+/* ================================
+   Vin-kort
+================================ */
+
+
+.wine-card {
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    flex-direction:column;
+
+    box-shadow:
+
+        0 5px 20px rgba(0,0,0,.12);
+
+    transition:
+
+        transform .2s,
+        box-shadow .2s;
+
+}
+
+
+
+.wine-card:hover {
+
+    transform:translateY(-5px);
+
+    box-shadow:
+
+        0 12px 30px rgba(0,0,0,.18);
+
+}
+
+
+
+
+/* Färgkant beroende på vin */
+
+.wine-card.red {
+
+    border-top:
+
+        8px solid #722f37;
+
+}
+
+
+.wine-card.white {
+
+    border-top:
+
+        8px solid #c9a227;
+
+}
+
+
+
+
+/* ================================
+   Bild
+================================ */
+
+
+.image-area {
+
+    height:220px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#fafafa;
+
+}
+
+
+
+.image-area img {
+
+    max-height:200px;
+
+    max-width:150px;
+
+}
+
+
+
+
+/* ================================
+   Information
+================================ */
+
+
+.wine-info {
+
+    padding:25px;
+
+}
+
+
+
+.wine-info h2 {
+
+    margin-top:0;
+
+    font-size:23px;
+
+    line-height:1.25;
+
+}
+
+
+
+.tags {
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+    margin:15px 0;
+
+}
+
+
+
+.tags span {
+
+    background:#eef3ef;
+
+    padding:7px 12px;
+
+    border-radius:20px;
+
+    font-size:14px;
+
+}
+
+
+
+
+/* ================================
+   Lager-tabell
+================================ */
+
+
+.stock-table {
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:15px;
+
+}
+
+
+
+.stock-table th {
+
+    text-align:left;
+
+    font-size:13px;
+
+    color:#666;
+
+}
+
+
+
+.stock-table td {
+
+    padding:8px 5px;
+
+    border-bottom:
+
+        1px solid #eee;
+
+}
+
+
+
+
+/* Lagerstatus */
+
+
+.good {
+
+    color:#087f23;
+
+    font-weight:bold;
+
+}
+
+
+
+.low {
+
+    color:#c47b00;
+
+    font-weight:bold;
+
+}
+
+
+
+.empty {
+
+    color:#b00020;
+
+    font-weight:bold;
+
+}
+
+
+
+
+/* ================================
+   Knappar
+================================ */
+
+
+.buttons {
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:25px;
+
+}
+
+
+
+.buttons a {
+
+    flex:1;
+
+    text-align:center;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:.2s;
+
+}
+
+
+
+.buttons a:first-child {
+
+    background:#0b6b3a;
+
+    color:white;
+
+}
+
+
+
+.buttons a:last-child {
+
+    background:#f3eeee;
+
+    color:#722f37;
+
+}
+
+
+
+.buttons a:hover {
+
+    transform:scale(1.03);
+
+}
+
+/* ===========================
+   Mobil
+=========================== */
+
+@media (max-width: 800px){
+
+    body{
+        padding:15px;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .wine-card{
+        overflow:hidden;
+    }
+
+    .image-area{
+        height:120px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        overflow:hidden;
+        background:#fafafa;
+    }
+
+    .image-area img{
+        display:block;
+        width:auto !important;
+        height:100px !important;
+        max-width:70px !important;
+        max-height:100px !important;
+        object-fit:contain;
+    }
+
+}
