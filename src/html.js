@@ -71,7 +71,10 @@ ${css}
 
 <header class="header">
 
-    <h1>🍷 Tillfälligt sortiment</h1>
+    <h1>
+    <span class="emoji">🍷</span>
+    <span>Tillfälligt sortiment</span>
+    </h1>
 
     <p>
         Växjöbutikerna · Tillfälligt sortiment

@@ -59,9 +59,9 @@ body {
 
 .header h1 {
 
-    margin:0;
-
-    font-size:36px;
+    display:flex;
+    align-items:center;
+    gap:12px;
 
 }
 
@@ -109,7 +109,7 @@ body {
     background:
         rgba(255,255,255,.15);
 
-    padding:15px 25px;
+    padding:12px 16px;
 
     border-radius:12px;
 
@@ -540,33 +540,120 @@ body {
 @media (max-width: 800px){
 
     body{
-        padding:15px;
+        padding:12px;
     }
 
+    /* ---------- Header ---------- */
+
+    .header{
+
+        padding:20px;
+        margin-bottom:20px;
+        border-radius:16px;
+
+    }
+
+    .header h1{
+
+        gap:8px;
+        font-size:1.8rem;
+
+    }
+
+    .emoji{
+
+        font-size:1.5rem;
+
+    }
+
+    .header p{
+
+        margin-top:6px;
+        font-size:1rem;
+
+    }
+
+    .updated{
+
+        margin-top:10px;
+        font-size:.9rem;
+
+    }
+
+    /* ---------- Statistik ---------- */
+
+    .summary{
+
+        gap:10px;
+        margin-top:18px;
+
+    }
+
+    .summary-box{
+
+        flex:1 1 calc(50% - 10px);
+
+        min-width:0;
+
+        padding:12px;
+
+    }
+
+    .summary-box strong{
+
+        font-size:2rem;
+
+    }
+
+    .summary-box span{
+
+        font-size:.95rem;
+
+    }
+
+    /* ---------- Sökfält ---------- */
+
+    #search{
+
+        padding:15px 18px;
+        font-size:16px;
+
+    }
+
+    /* ---------- Produkter ---------- */
+
     .products{
+
         grid-template-columns:1fr;
+
     }
 
     .wine-card{
+
         overflow:hidden;
+
     }
 
     .image-area{
+
         height:120px;
         display:flex;
         justify-content:center;
         align-items:center;
         overflow:hidden;
         background:#fafafa;
+
     }
 
     .image-area img{
+
         display:block;
         width:auto !important;
         height:100px !important;
         max-width:70px !important;
         max-height:100px !important;
         object-fit:contain;
+
     }
 
 }
