@@ -394,7 +394,7 @@ ${product.productNameThin ?? ""}
 
 
 <span>
-🌍 ${product.country}
+🌎 ${product.country}
 </span>
 
 
@@ -407,7 +407,7 @@ ${product.originLevel1
 </span>    
 
 <span>
-💰 ${product.price} kr
+💵 ${product.price} kr
 </span>
 
 
@@ -419,10 +419,9 @@ ${product.vintage
 </div>
 
 
+<p class="wine-info2">
 
-<p>
-
-<b>Producent</b><br>
+<b>🧑‍🌾 Producent</b><br>
 
 ${product.producerName}
 
@@ -430,7 +429,7 @@ ${product.producerName}
 
 
 
-<p>
+<p class="wine-info2">
 
 <b>🍇 Druvor</b><br>
 
@@ -440,22 +439,17 @@ ${grapes}
 
 
 
-<p>
+<p class="wine-info2">
 
-<b>Smak</b><br>
+<b>😋 Smak</b><br>
 
 ${product.taste || "Ingen smakbeskrivning"}
 
 </p>
 
-
-
-
-<h3>
-📦 Lager
-</h3>
-
-
+<p>
+<b>📦 Lager</b>
+</p>
 
 <table class="stock-table">
 
@@ -482,7 +476,7 @@ ${stockRows}
 <a href="${product.systembolaget || "#"}"
 target="_blank">
 
-🛒</br>Systembolaget
+🛒 Systembolaget
 
 </a>
 
@@ -491,7 +485,7 @@ target="_blank">
 <a href="${product.vivino || "#"}"
 target="_blank">
 
-⭐</br>Vivino
+⭐ Vivino
 
 </a>
 

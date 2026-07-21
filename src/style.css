@@ -141,7 +141,7 @@ body{
 
     margin-top:15px;
 
-    font-size:14px;
+    font-size:13px;
 
     opacity:.85;
 
@@ -191,7 +191,7 @@ body{
 
 .summary-box span{
 
-    font-size:14px;
+    font-size:12px;
 
 }
 
@@ -493,12 +493,17 @@ body{
 
     margin-bottom:10px;
 
-    font-size:23px;
+    font-size:22px;
 
     line-height:1.25;
 
 }
 
+.wine-info2{
+
+    margin-bottom:10px;
+
+}
 
 /* ==========================================================================
    Taggar
@@ -524,7 +529,7 @@ body{
 
     background:#eef3ef;
 
-    font-size:14px;
+    font-size:13px;
 
 }
 
@@ -537,7 +542,7 @@ body{
 
     width:100%;
 
-    margin-top:15px;
+    margin-top:10px;
 
     border-collapse:collapse;
 
@@ -545,7 +550,7 @@ body{
 
 .stock-table th{
 
-    padding-bottom:8px;
+    padding:8px 5px;
 
     text-align:left;
 
@@ -631,16 +636,18 @@ body{
 .buttons a:first-child{
 
     background:var(--green);
-
+    font-size:14px;
     color:white;
 
 }
 
 .buttons a:last-child{
 
-    background:#f3eeee;
 
-    color:var(--red);
+    background: #8b1e3f;
+    font-size:14px;
+    color: white;
+
 
 }
 
@@ -687,7 +694,7 @@ body{
 
     .emoji{
 
-        font-size:1.5rem;
+        font-size:1.6rem;
 
     }
 

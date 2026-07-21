@@ -15,15 +15,18 @@ const { generateReport } = require("./html");
 
 const stores = require("./stores");
 
+const maxProducts = process.argv[2]
+    ? parseInt(process.argv[2], 10)
+    : null;
+
+console.log(`Max antal viner: ${maxProducts ?? "Alla"}`);
 
 async function main() {
 
 
     console.log("Hämtar sortiment...");
 
-
-    let products = await getAllProducts(stores);
-
+    let products = await getAllProducts(stores, maxProducts);
 
     console.log(
         `${products.length} viner hittades`

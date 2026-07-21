@@ -12,7 +12,7 @@ const headers = {
 
 
 // Hämtar alla TSV-viner för en butik
-async function getProductsFromStore(storeId) {
+async function getProductsFromStore(storeId, maxProducts = null) {
 
     let products = [];
     let page = 1;
@@ -42,6 +42,12 @@ async function getProductsFromStore(storeId) {
         const pageProducts = response.data.products;
 
         products.push(...pageProducts);
+
+        // Avbryt om vi nått max antal produkter
+        if (maxProducts && products.length >= maxProducts) {
+            products = products.slice(0, maxProducts);
+            more = false;
+        }
 
 
         if (pageProducts.length < 30) {
@@ -73,7 +79,7 @@ async function getStock(storeId, productId) {
 
 
 // Hämtar alla butiker och slår ihop produkter
-async function getAllProducts(stores) {
+async function getAllProducts(stores, maxProducts = null) {
 
     const productMap = new Map();
 
@@ -82,7 +88,7 @@ async function getAllProducts(stores) {
 
         console.log(`Hämtar ${store.name}...`);
 
-        const products = await getProductsFromStore(store.id);
+        const products = await getProductsFromStore(store.id, maxProducts);
 
 
         for (const product of products) {
