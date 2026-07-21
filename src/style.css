@@ -136,17 +136,16 @@ body {
 
 }
 
-.summary-box.active{
+.summary-box.active {
 
-    background:#831e34;
+    background: #cfe8d5;
 
-    color:#ffffff;
+    color: #084d2b;
 
-    box-shadow:0 4px 12px rgba(0,0,0,.15);
+    border-color: #ffffff;
 
-    transform:translateY(-2px);
-
-    border:2px solid #ffffff;
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.18);
 
 }
 
@@ -158,11 +157,11 @@ body {
 
 }
 
-.filter:hover{
+.filter:hover {
 
-    transform:translateY(-3px);
+    background: #b9ddc1;
 
-    background:rgba(255,255,255,.25);
+    color: #084d2b;
 
 }
 
