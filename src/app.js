@@ -238,13 +238,51 @@ function sortProducts(type){
     applyFilters();
 }
 
-document
-.getElementById("sortSelect")
-.addEventListener("change", function(){
+const sortButton =
+    document.getElementById("sortButton");
 
-    sortProducts(this.value);
+const sortOptions =
+    document.getElementById("sortOptions");
+
+const sortLabel =
+    document.getElementById("sortLabel");
+
+sortButton.onclick = () => {
+
+    sortOptions.classList.toggle("open");
+
+};
+
+sortOptions
+.querySelectorAll("button")
+.forEach(button=>{
+
+    button.onclick = () => {
+
+        sortProducts(
+            button.dataset.sort
+        );
+
+        sortLabel.textContent =
+            button.textContent;
+
+        sortOptions.classList.remove("open");
+
+    };
 
 });
+
+document.addEventListener("click",e=>{
+
+    if(!e.target.closest(".sort-menu")){
+
+        sortOptions.classList.remove("open");
+
+    }
+
+});
+
+
 showAll();
 filterStore("Alla");
 
