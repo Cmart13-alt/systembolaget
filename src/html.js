@@ -57,7 +57,7 @@ function generateReport(products, stores) {
 
 <link rel="icon" href="icon-192.png" type="image/png">
 
-<title>Tillfälligt sortiment – Växjö</title>
+<title>Vinguide - Växjö</title>
 
 <style>
 
