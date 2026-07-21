@@ -407,7 +407,7 @@ ${product.originLevel1
 </span>    
 
 <span>
-💵 ${product.price} kr
+💲 ${product.price} kr
 </span>
 
 
