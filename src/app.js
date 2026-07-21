@@ -143,54 +143,13 @@ function applyFilters(){
 
 
     });
-    
-    updateSummary();
+
+    updateStoreSummary();
+    updateTypeSummary();
 
 }
 
-function updateSummary() {
-
-    const visible =
-        [...document.querySelectorAll(".wine-card")]
-            .filter(card => card.style.display !== "none");
-
-    //
-    // Butiker
-    //
-
-    document
-        .querySelectorAll("[data-store]")
-        .forEach(box => {
-
-            const store = box.dataset.store;
-
-            let count;
-
-            if (store === "Alla") {
-
-                count = visible.length;
-
-            } else {
-
-                count = visible.filter(card =>
-                    Number(card.dataset[store]) > 0
-                ).length;
-
-            }
-
-            const strong =
-                document.getElementById(
-                    `count-store-${store}`
-                );
-
-            if (strong)
-                strong.textContent = count;
-
-        });
-
-    //
-    // Vintyper
-    //
+function updateStoreSummary(){
 
     const mainTypes = [
         "Rött vin",
@@ -199,43 +158,152 @@ function updateSummary() {
         "Mousserande vin"
     ];
 
-    document
-        .querySelectorAll("[data-typefilter]")
-        .forEach(box => {
+    const text =
+        document.getElementById("search")
+        .value
+        .toLowerCase();
 
-            const type = box.dataset.typefilter;
+    const cards =
+        [...document.querySelectorAll(".wine-card")];
+
+    const filtered =
+        cards.filter(card => {
+
+            const type = card.dataset.type;
+
+            let typeOK = true;
+
+            if(currentType === "Övriga"){
+
+                typeOK =
+                    !mainTypes.includes(type);
+
+            }
+            else if(currentType !== "Alla"){
+
+                typeOK =
+                    type === currentType;
+
+            }
+
+            const searchOK =
+                !text ||
+                card.innerText
+                    .toLowerCase()
+                    .includes(text);
+
+            return typeOK && searchOK;
+
+        });
+
+    document
+        .querySelectorAll("[data-store]")
+        .forEach(box=>{
+
+            const store =
+                box.dataset.store;
 
             let count;
 
-            if (type === "Alla") {
+            if(store==="Alla"){
 
-                count = visible.length;
-
-            }
-            else if (type === "Övriga") {
-
-                count =
-                    visible.filter(card =>
-                        !mainTypes.includes(card.dataset.type)
-                    ).length;
+                count = filtered.length;
 
             }
-            else {
+            else{
 
                 count =
-                    visible.filter(card =>
-                        card.dataset.type === type
+                    filtered.filter(card=>
+                        Number(card.dataset[store])>0
                     ).length;
 
             }
 
-            const strong =
-                document.getElementById(
-                    `count-type-${type}`
-                );
+            document.getElementById(
+                `count-store-${store}`
+            ).textContent = count;
 
-            if (strong)
-                strong.textContent = count;
+        });
+
+}
+
+function updateTypeSummary(){
+
+    const mainTypes = [
+        "Rött vin",
+        "Vitt vin",
+        "Rosévin",
+        "Mousserande vin"
+    ];
+
+    const text =
+        document.getElementById("search")
+        .value
+        .toLowerCase();
+
+    const cards =
+        [...document.querySelectorAll(".wine-card")];
+
+    const filtered =
+        cards.filter(card=>{
+
+            let storeOK = true;
+
+            if(currentStore !== "Alla"){
+
+                storeOK =
+                    Number(
+                        card.dataset[currentStore]
+                    ) > 0;
+
+            }
+
+            const searchOK =
+                !text ||
+                card.innerText
+                    .toLowerCase()
+                    .includes(text);
+
+            return storeOK && searchOK;
+
+        });
+
+    document
+        .querySelectorAll("[data-typefilter]")
+        .forEach(box=>{
+
+            const type =
+                box.dataset.typefilter;
+
+            let count;
+
+            if(type==="Alla"){
+
+                count = filtered.length;
+
+            }
+            else if(type==="Övriga"){
+
+                count =
+                    filtered.filter(card=>
+                        !mainTypes.includes(
+                            card.dataset.type
+                        )
+                    ).length;
+
+            }
+            else{
+
+                count =
+                    filtered.filter(card=>
+                        card.dataset.type===type
+                    ).length;
+
+            }
+
+            document.getElementById(
+                `count-type-${type}`
+            ).textContent = count;
 
         });
 
