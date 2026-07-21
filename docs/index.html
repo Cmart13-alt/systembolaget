@@ -272,11 +272,9 @@ body {
 }
 
 
-
 /* ================================
    Vin-kort
 ================================ */
-
 
 .wine-card {
 
@@ -290,51 +288,42 @@ body {
 
     flex-direction:column;
 
-    box-shadow:
+    border:2px solid transparent;
 
+    box-shadow:
         0 5px 20px rgba(0,0,0,.12);
 
     transition:
-
-        transform .2s,
+        background-color .2s,
+        border-color .2s,
         box-shadow .2s;
 
 }
 
 
+/* Hover (desktop) och valt kort */
 
 .wine-card:hover {
 
-    transform:translateY(-5px);
+    background:#f3f8f4;
+
+    border-color:#0b6b3a;
 
     box-shadow:
-
-        0 12px 30px rgba(0,0,0,.18);
-
-}
-
-
-
-
-/* Färgkant beroende på vin */
-
-.wine-card.red {
-
-    border-top:
-
-        8px solid #722f37;
+        0 8px 24px rgba(0,0,0,.18);
 
 }
 
+.wine-card:active {
 
-.wine-card.white {
+    background:#eef6ef;
 
-    border-top:
+    border-color:#0b6b3a;
 
-        8px solid #c9a227;
+    box-shadow:
+        0 8px 24px rgba(0,0,0,.20);
 
 }
-
 
 
 
@@ -705,7 +694,7 @@ body {
         Växjöbutikerna · Tillfälligt sortiment
     </p>
     <p class="updated">
-    🕒 Senast uppdaterad: 2026-07-21 12:33
+    🕒 Senast uppdaterad: 2026-07-21 12:55
     </p>
 
     <div class="summary">
@@ -785,7 +774,7 @@ body {
         data-store="0701"
         onclick="filterStore('0701')">
 
-            <strong>57</strong>
+            <strong>56</strong>
             <span>🏬 Växjö City</span>
 
         </div>
@@ -3653,7 +3642,7 @@ data-vintage="2023"
 data-alcohol="14"
 
 data-0701="10"
-data-0707="10"
+data-0707="7"
 data-0710="10"
 
 >
@@ -3774,7 +3763,7 @@ Nyanserad, kryddig smak med inslag av fat, körsbär, salvia, nougat, plommon, k
             <td>Grand Samarkand</td>
 
             <td class="good">
-                10 st
+                7 st
             </td>
 
             <td>
@@ -4649,7 +4638,7 @@ data-alcohol="12"
 
 data-0701="8"
 data-0707="0"
-data-0710="12"
+data-0710="10"
 
 >
 
@@ -4785,7 +4774,7 @@ Bärig smak med inslag av körsbär, skogshallon, torkade tranbär, örter och b
             <td>Norremark</td>
 
             <td class="good">
-                12 st
+                10 st
             </td>
 
             <td>
@@ -7035,7 +7024,7 @@ data-vintage="2025"
 
 data-alcohol="11.5"
 
-data-0701="1"
+data-0701="0"
 data-0707="0"
 data-0710="0"
 
@@ -7140,12 +7129,12 @@ Fruktig, mycket frisk smak med inslag av gula päron, ananas, persika, citronska
 
             <td>Växjö City</td>
 
-            <td class="low">
-                1 st
+            <td class="empty">
+                Slut
             </td>
 
             <td>
-                TS-00-00
+                -
             </td>
 
         </tr>
