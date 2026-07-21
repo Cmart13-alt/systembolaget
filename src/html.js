@@ -138,7 +138,7 @@ ${css}
         data-typefilter="Övriga"
         onclick="filterType('Övriga')">
 
-        <strong>${countWineType(products,"Övriga")}</strong>
+        <strong id="count-type-Övriga">${countWineType(products,"Övriga")}</strong>
         <span>🍷 Övriga</span>
 
         </div>
