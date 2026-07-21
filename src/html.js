@@ -196,33 +196,57 @@ ${css}
     placeholder="🔍 Sök vin, producent, land eller druva..."
 >
 
-<select id="sortSelect">
+<div class="toolbar">
 
-<option value="">
-Sortera efter...
-</option>
+    <div class="search-area">
 
-<option value="name">
-Namn A–Ö
-</option>
+        <input
+            id="search"
+            placeholder="Sök vin, producent eller land..."
+        >
 
-<option value="priceAsc">
-Pris stigande
-</option>
+    </div>
 
-<option value="priceDesc">
-Pris fallande
-</option>
+    <div class="sort-menu">
 
-<option value="vintage">
-Nyaste årgång
-</option>
+        <button
+            id="sortButton"
+            class="sort-button">
 
-<option value="alcohol">
-Alkoholhalt
-</option>
+            ⇅
+            <span id="sortLabel">Namn</span>
 
-</select>
+        </button>
+
+        <div
+            id="sortOptions"
+            class="sort-options">
+
+            <button data-sort="name">
+                Namn
+            </button>
+
+            <button data-sort="priceAsc">
+                Pris ↑
+            </button>
+
+            <button data-sort="priceDesc">
+                Pris ↓
+            </button>
+
+            <button data-sort="vintage">
+                Årgång
+            </button>
+
+            <button data-sort="alcohol">
+                Alkoholhalt
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 </section>
 
