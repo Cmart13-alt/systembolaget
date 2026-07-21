@@ -201,48 +201,120 @@ body {
 ================================ */
 
 
-.search-area {
+.toolbar{
 
     max-width:1200px;
 
-    margin:0 auto 30px auto;
+    margin:0 auto 30px;
+
+    display:flex;
+
+    gap:15px;
+
+    align-items:center;
 
 }
 
+.search-area{
 
+    flex:1;
 
-#search {
+    margin:0;
 
-    width:100%;
+}
+
+.sort-menu{
+
+    position:relative;
+
+}
+
+.sort-button{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
 
     padding:18px 22px;
 
-    font-size:17px;
-
     border-radius:14px;
 
-    border:
-
-        1px solid #ddd;
+    border:1px solid #ddd;
 
     background:white;
 
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.2s;
+
+}
+
+.sort-button:hover{
+
+    background:#eef6ef;
+
+}
+
+.sort-options{
+
+    display:none;
+
+    position:absolute;
+
+    top:110%;
+
+    right:0;
+
+    min-width:220px;
+
+    background:white;
+
+    border-radius:14px;
+
+    overflow:hidden;
+
     box-shadow:
+        0 10px 30px rgba(0,0,0,.18);
 
-        0 3px 10px rgba(0,0,0,.08);
-
-}
-
-
-
-#search:focus {
-
-    outline:none;
-
-    border-color:#0b6b3a;
+    z-index:999;
 
 }
 
+.sort-options.open{
+
+    display:block;
+
+}
+
+.sort-options button{
+
+    width:100%;
+
+    padding:14px 18px;
+
+    background:white;
+
+    border:none;
+
+    text-align:left;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+}
+
+.sort-options button:hover{
+
+    background:#eef6ef;
+
+}
 
 
 
@@ -638,6 +710,30 @@ body {
 
     }
 
+    /* ---------- Sortering ---------- */
+
+    @media (max-width:800px){
+
+    .toolbar{
+
+        gap:10px;
+
+    }
+
+    .sort-button{
+
+        padding:15px;
+
+    }
+
+    .sort-button span{
+
+        display:none;
+
+    }
+
+}
+
     /* ---------- Produkter ---------- */
 
     .products{
@@ -693,7 +789,7 @@ body {
         Växjöbutikerna · Tillfälligt sortiment
     </p>
     <p class="updated">
-    🕒 Senast uppdaterad: 2026-07-21 13:20
+    🕒 Senast uppdaterad: 2026-07-21 13:34
     </p>
 
     <div class="summary">
@@ -1056,7 +1152,7 @@ data-vintage="2025"
 
 data-alcohol="12.5"
 
-data-0701="14"
+data-0701="13"
 data-0707="35"
 data-0710="23"
 
@@ -1162,7 +1258,7 @@ Fruktig, ungdomlig smak med inslag av granatäpplen, hallon, vattenmelon och blo
             <td>Växjö City</td>
 
             <td class="good">
-                14 st
+                13 st
             </td>
 
             <td>
@@ -2052,7 +2148,7 @@ data-vintage="2024"
 
 data-alcohol="13.5"
 
-data-0701="6"
+data-0701="5"
 data-0707="0"
 data-0710="24"
 
@@ -2157,8 +2253,8 @@ Nyanserad, kryddig smak med inslag av fat, körsbär, rökig mineral, timjan, jo
 
             <td>Växjö City</td>
 
-            <td class="good">
-                6 st
+            <td class="low">
+                5 st
             </td>
 
             <td>
@@ -10410,7 +10506,7 @@ data-vintage="2025"
 
 data-alcohol="13.5"
 
-data-0701="7"
+data-0701="6"
 data-0707="0"
 data-0710="0"
 
@@ -10516,7 +10612,7 @@ Fruktig smak med inslag av jordgubbar, rökig mineral, nätmelon, persika och bl
             <td>Växjö City</td>
 
             <td class="good">
-                7 st
+                6 st
             </td>
 
             <td>
