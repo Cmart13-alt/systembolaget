@@ -188,14 +188,6 @@ ${css}
 </header>
 
 
-<section class="search-area">
-
-<input 
-    id="search"
-    type="text"
-    placeholder="🔍 Sök vin, producent, land eller druva..."
->
-
 <div class="toolbar">
 
     <div class="search-area">
@@ -248,7 +240,6 @@ ${css}
 
 </div>
 
-</section>
 
 
 <main class="products" id="products">
@@ -405,6 +396,9 @@ ${product.originLevel1
     ? `<span>📍 ${product.originLevel1}</span>`
     : ""}
 
+<span>
+🤪 ${product.alcoholPercentage} %
+</span>    
 
 <span>
 💰 ${product.price} kr

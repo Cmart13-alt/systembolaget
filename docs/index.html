@@ -28,75 +28,138 @@
 
 <style>
 
-/* ================================
-   Grundlayout
-================================ */
+/* ==========================================================================
+   VINGUIDE
+   style.css v2.0
+   Del 1
+   ========================================================================== */
 
-* {
-    box-sizing: border-box;
+
+/* ==========================================================================
+   Variabler
+   ========================================================================== */
+
+:root{
+
+    /* Färger */
+
+    --green:#0b6b3a;
+    --green-dark:#084d2b;
+    --green-light:#eef6ef;
+
+    --red:#722f37;
+
+    --background:#f4f6f4;
+
+    --surface:#ffffff;
+
+    --text:#222;
+
+    --border:#dddddd;
+
+    /* Radier */
+
+    --radius-small:12px;
+    --radius-medium:14px;
+    --radius-large:20px;
+
+    /* Skuggor */
+
+    --shadow-small:
+        0 3px 10px rgba(0,0,0,.08);
+
+    --shadow-medium:
+        0 5px 20px rgba(0,0,0,.12);
+
+    --shadow-large:
+        0 8px 25px rgba(0,0,0,.15);
+
+    /* Animation */
+
+    --transition:
+        background-color .2s,
+        color .2s,
+        border-color .2s,
+        box-shadow .2s;
+
 }
 
 
-body {
+/* ==========================================================================
+   Reset
+   ========================================================================== */
 
-    margin: 0;
-    padding: 40px;
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+/* ==========================================================================
+   Grundlayout
+   ========================================================================== */
+
+body{
+
+    padding:40px;
 
     font-family:
         "Segoe UI",
         Arial,
         sans-serif;
 
-    background:
-        #f4f6f4;
+    background:var(--background);
 
-    color:
-        #222;
+    color:var(--text);
+
+    line-height:1.45;
 
 }
 
 
-
-/* ================================
+/* ==========================================================================
    Header
-================================ */
+   ========================================================================== */
 
+.header{
 
-.header {
+    max-width:1200px;
 
-    max-width: 1200px;
+    margin:0 auto 30px;
 
-    margin: 0 auto 30px auto;
+    padding:35px;
+
+    border-radius:var(--radius-large);
 
     background:
         linear-gradient(
             135deg,
-            #0b6b3a,
-            #084d2b
+            var(--green),
+            var(--green-dark)
         );
 
     color:white;
 
-    padding:35px;
-
-    border-radius:20px;
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.15);
+    box-shadow:var(--shadow-large);
 
 }
 
-
-.header h1 {
+.header h1{
 
     display:flex;
+
     align-items:center;
+
     gap:12px;
 
 }
 
-
-.header p {
+.header p{
 
     margin-top:8px;
 
@@ -104,7 +167,7 @@ body {
 
 }
 
-.updated {
+.updated{
 
     margin-top:15px;
 
@@ -115,43 +178,40 @@ body {
 }
 
 
-/* ================================
+/* ==========================================================================
    Statistik
-================================ */
+   ========================================================================== */
 
-
-.summary {
+.summary{
 
     display:flex;
+
+    flex-wrap:wrap;
 
     gap:15px;
 
     margin-top:25px;
 
-    flex-wrap:wrap;
-
 }
 
+.summary-box{
 
+    min-width:120px;
 
-.summary-box {
+    padding:12px 16px;
+
+    text-align:center;
+
+    border-radius:var(--radius-small);
 
     background:
         rgba(255,255,255,.15);
 
-    padding:12px 16px;
-
-    border-radius:12px;
-
-    min-width:120px;
-
-    text-align:center;
+    transition:var(--transition);
 
 }
 
-
-
-.summary-box strong {
+.summary-box strong{
 
     display:block;
 
@@ -159,47 +219,46 @@ body {
 
 }
 
-
-.summary-box span {
+.summary-box span{
 
     font-size:14px;
 
 }
 
-.summary-box.active {
 
-    background: #cfe8d5;
+/* ==========================================================================
+   Filter
+   ========================================================================== */
 
-    color: #084d2b;
+.filter{
 
-    border-color: #ffffff;
+    cursor:pointer;
+
+}
+
+.filter:hover{
+
+    background:#b9ddc1;
+
+    color:var(--green-dark);
+
+}
+
+.summary-box.active{
+
+    background:#cfe8d5;
+
+    color:var(--green-dark);
 
     box-shadow:
         0 4px 12px rgba(0,0,0,.18);
 
 }
 
-.filter{
 
-    cursor:pointer;
-
-    transition:.2s;
-
-}
-
-.filter:hover {
-
-    background: #b9ddc1;
-
-    color: #084d2b;
-
-}
-
-
-/* ================================
-   Sökfält
-================================ */
-
+/* ==========================================================================
+   Toolbar
+   ========================================================================== */
 
 .toolbar{
 
@@ -209,19 +268,55 @@ body {
 
     display:flex;
 
-    gap:15px;
-
     align-items:center;
 
+    gap:15px;
+
 }
+
+
+/* ==========================================================================
+   Sökfält
+   ========================================================================== */
 
 .search-area{
 
     flex:1;
 
-    margin:0;
+}
+
+#search{
+
+    width:100%;
+
+    padding:18px 22px;
+
+    font-size:17px;
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-medium);
+
+    background:var(--surface);
+
+    box-shadow:var(--shadow-small);
+
+    transition:var(--transition);
 
 }
+
+#search:focus{
+
+    outline:none;
+
+    border-color:var(--green);
+
+}
+
+
+/* ==========================================================================
+   Sortering
+   ========================================================================== */
 
 .sort-menu{
 
@@ -239,25 +334,25 @@ body {
 
     padding:18px 22px;
 
-    border-radius:14px;
-
-    border:1px solid #ddd;
-
-    background:white;
-
-    cursor:pointer;
-
     font-size:16px;
 
     font-weight:600;
 
-    transition:.2s;
+    cursor:pointer;
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-medium);
+
+    background:var(--surface);
+
+    transition:var(--transition);
 
 }
 
 .sort-button:hover{
 
-    background:#eef6ef;
+    background:var(--green-light);
 
 }
 
@@ -273,16 +368,16 @@ body {
 
     min-width:220px;
 
-    background:white;
-
-    border-radius:14px;
-
     overflow:hidden;
+
+    border-radius:var(--radius-medium);
+
+    background:var(--surface);
 
     box-shadow:
         0 10px 30px rgba(0,0,0,.18);
 
-    z-index:999;
+    z-index:1000;
 
 }
 
@@ -298,41 +393,39 @@ body {
 
     padding:14px 18px;
 
-    background:white;
-
     border:none;
+
+    background:var(--surface);
 
     text-align:left;
 
+    font-size:15px;
+
     cursor:pointer;
 
-    font-size:15px;
+    transition:var(--transition);
 
 }
 
 .sort-options button:hover{
 
-    background:#eef6ef;
+    background:var(--green-light);
 
 }
 
-
-
-/* ================================
+/* ==========================================================================
    Produktgrid
-================================ */
+   ========================================================================== */
 
-
-.products {
+.products{
 
     max-width:1200px;
 
-    margin:auto;
+    margin:0 auto;
 
     display:grid;
 
     grid-template-columns:
-
         repeat(
             auto-fit,
             minmax(380px,1fr)
@@ -343,69 +436,55 @@ body {
 }
 
 
-/* ================================
-   Vin-kort
-================================ */
+/* ==========================================================================
+   Vinkort
+   ========================================================================== */
 
-.wine-card {
-
-    background:white;
-
-    border-radius:20px;
-
-    overflow:hidden;
+.wine-card{
 
     display:flex;
 
     flex-direction:column;
 
+    overflow:hidden;
+
+    background:var(--surface);
+
     border:2px solid transparent;
 
-    box-shadow:
-        0 5px 20px rgba(0,0,0,.12);
+    border-radius:var(--radius-large);
 
-    transition:
-        background-color .2s,
-        border-color .2s,
-        box-shadow .2s;
+    box-shadow:var(--shadow-medium);
+
+    transition:var(--transition);
 
 }
 
-
-/* Hover (desktop) och valt kort */
-
-.wine-card:hover {
+.wine-card:hover{
 
     background:#f3f8f4;
 
-    border-color:#0b6b3a;
+    border-color:var(--green);
 
     box-shadow:
         0 8px 24px rgba(0,0,0,.18);
 
 }
 
-.wine-card:active {
+.wine-card:active{
 
-    background:#eef6ef;
+    background:var(--green-light);
 
-    border-color:#0b6b3a;
-
-    box-shadow:
-        0 8px 24px rgba(0,0,0,.20);
+    border-color:var(--green);
 
 }
 
 
+/* ==========================================================================
+   Produktbild
+   ========================================================================== */
 
-/* ================================
-   Bild
-================================ */
-
-
-.image-area {
-
-    height:220px;
+.image-area{
 
     display:flex;
 
@@ -413,39 +492,36 @@ body {
 
     align-items:center;
 
+    height:220px;
+
     background:#fafafa;
 
 }
 
+.image-area img{
 
-
-.image-area img {
-
-    max-height:200px;
+    display:block;
 
     max-width:150px;
+
+    max-height:200px;
 
 }
 
 
-
-
-/* ================================
+/* ==========================================================================
    Information
-================================ */
+   ========================================================================== */
 
-
-.wine-info {
+.wine-info{
 
     padding:25px;
 
 }
 
+.wine-info h2{
 
-
-.wine-info h2 {
-
-    margin-top:0;
+    margin-bottom:10px;
 
     font-size:23px;
 
@@ -454,8 +530,11 @@ body {
 }
 
 
+/* ==========================================================================
+   Taggar
+   ========================================================================== */
 
-.tags {
+.tags{
 
     display:flex;
 
@@ -467,41 +546,36 @@ body {
 
 }
 
-
-
-.tags span {
-
-    background:#eef3ef;
+.tags span{
 
     padding:7px 12px;
 
-    border-radius:20px;
+    border-radius:999px;
+
+    background:#eef3ef;
 
     font-size:14px;
 
 }
 
 
+/* ==========================================================================
+   Lager
+   ========================================================================== */
 
-
-/* ================================
-   Lager-tabell
-================================ */
-
-
-.stock-table {
+.stock-table{
 
     width:100%;
 
-    border-collapse:collapse;
-
     margin-top:15px;
+
+    border-collapse:collapse;
 
 }
 
+.stock-table th{
 
-
-.stock-table th {
+    padding-bottom:8px;
 
     text-align:left;
 
@@ -511,61 +585,48 @@ body {
 
 }
 
-
-
-.stock-table td {
+.stock-table td{
 
     padding:8px 5px;
 
-    border-bottom:
-
-        1px solid #eee;
+    border-bottom:1px solid #eeeeee;
 
 }
 
 
+/* ==========================================================================
+   Lagerstatus
+   ========================================================================== */
 
-
-/* Lagerstatus */
-
-
-.good {
+.good{
 
     color:#087f23;
 
-    font-weight:bold;
+    font-weight:700;
 
 }
 
-
-
-.low {
+.low{
 
     color:#c47b00;
 
-    font-weight:bold;
+    font-weight:700;
 
 }
 
-
-
-.empty {
+.empty{
 
     color:#b00020;
 
-    font-weight:bold;
+    font-weight:700;
 
 }
 
-
-
-
-/* ================================
+/* ==========================================================================
    Knappar
-================================ */
+   ========================================================================== */
 
-
-.buttons {
+.buttons{
 
     display:flex;
 
@@ -575,70 +636,73 @@ body {
 
 }
 
-
-
-.buttons a {
+.buttons a{
 
     flex:1;
 
-    text-align:center;
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
 
     padding:12px;
 
-    border-radius:12px;
-
     text-decoration:none;
 
-    font-weight:bold;
+    font-weight:700;
 
-    transition:.2s;
+    border-radius:var(--radius-small);
+
+    transition:var(--transition);
 
 }
 
+.buttons a:first-child{
 
-
-.buttons a:first-child {
-
-    background:#0b6b3a;
+    background:var(--green);
 
     color:white;
 
 }
 
-
-
-.buttons a:last-child {
+.buttons a:last-child{
 
     background:#f3eeee;
 
-    color:#722f37;
+    color:var(--red);
+
+}
+
+.buttons a:hover{
+
+    filter:brightness(1.04);
+
+    box-shadow:var(--shadow-small);
 
 }
 
 
-
-.buttons a:hover {
-
-    transform:scale(1.03);
-
-}
-
-/* ===========================
+/* ==========================================================================
    Mobil
-=========================== */
+   ========================================================================== */
 
-@media (max-width: 800px){
+@media (max-width:800px){
 
     body{
+
         padding:12px;
+
     }
 
-    /* ---------- Header ---------- */
+    /* ----- Header ----- */
 
     .header{
 
         padding:20px;
+
         margin-bottom:20px;
+
         border-radius:16px;
 
     }
@@ -646,6 +710,7 @@ body {
     .header h1{
 
         gap:8px;
+
         font-size:1.8rem;
 
     }
@@ -659,6 +724,7 @@ body {
     .header p{
 
         margin-top:6px;
+
         font-size:1rem;
 
     }
@@ -666,15 +732,17 @@ body {
     .updated{
 
         margin-top:10px;
+
         font-size:.9rem;
 
     }
 
-    /* ---------- Statistik ---------- */
+    /* ----- Statistik ----- */
 
     .summary{
 
         gap:10px;
+
         margin-top:18px;
 
     }
@@ -701,22 +769,27 @@ body {
 
     }
 
-    /* ---------- Sökfält ---------- */
-
-    #search{
-
-        padding:15px 18px;
-        font-size:16px;
-
-    }
-
-    /* ---------- Sortering ---------- */
-
-    @media (max-width:800px){
+    /* ----- Toolbar ----- */
 
     .toolbar{
 
         gap:10px;
+
+    }
+
+    .search-area{
+
+        flex:1;
+
+    }
+
+    #search{
+
+        width:100%;
+
+        padding:15px 18px;
+
+        font-size:16px;
 
     }
 
@@ -732,9 +805,7 @@ body {
 
     }
 
-}
-
-    /* ---------- Produkter ---------- */
+    /* ----- Produkter ----- */
 
     .products{
 
@@ -742,31 +813,37 @@ body {
 
     }
 
-    .wine-card{
-
-        overflow:hidden;
-
-    }
+    /* ----- Bilder ----- */
 
     .image-area{
 
         height:120px;
-        display:flex;
-        justify-content:center;
-        align-items:center;
+
         overflow:hidden;
-        background:#fafafa;
 
     }
 
     .image-area img{
 
         display:block;
-        width:auto !important;
-        height:100px !important;
-        max-width:70px !important;
-        max-height:100px !important;
+
+        width:auto;
+
+        height:100px;
+
+        max-width:70px;
+
+        max-height:100px;
+
         object-fit:contain;
+
+    }
+
+    /* ----- Knappar ----- */
+
+    .buttons{
+
+        flex-direction:column;
 
     }
 
@@ -789,7 +866,7 @@ body {
         Växjöbutikerna · Tillfälligt sortiment
     </p>
     <p class="updated">
-    🕒 Senast uppdaterad: 2026-07-21 13:39
+    🕒 Senast uppdaterad: 2026-07-21 14:04
     </p>
 
     <div class="summary">
@@ -897,14 +974,6 @@ body {
 </header>
 
 
-<section class="search-area">
-
-<input 
-    id="search"
-    type="text"
-    placeholder="🔍 Sök vin, producent, land eller druva..."
->
-
 <div class="toolbar">
 
     <div class="search-area">
@@ -957,7 +1026,6 @@ body {
 
 </div>
 
-</section>
 
 
 <main class="products" id="products">
@@ -1014,6 +1082,9 @@ Premium Sangria
 
 
 
+<span>
+🤪 8.5 %
+</span>    
 
 <span>
 💰 80 kr
@@ -1213,6 +1284,9 @@ Cabernet Shiraz Rosé
 
 <span>📍 Trakiska låglandet</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 39 kr
@@ -1412,6 +1486,9 @@ Puszta Libre
 
 
 
+<span>
+🤪 11.5 %
+</span>    
 
 <span>
 💰 180 kr
@@ -1611,6 +1688,9 @@ Monferrato Nebbiolo
 
 <span>📍 Piemonte</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 119 kr
@@ -1810,6 +1890,9 @@ Grüner Veltliner
 
 
 
+<span>
+🤪 11.5 %
+</span>    
 
 <span>
 💰 70 kr
@@ -2009,6 +2092,9 @@ Pinot Noir
 
 <span>📍 New South Wales</span>
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 159 kr
@@ -2209,6 +2295,9 @@ Benanti Etna Rosso
 
 <span>📍 Sicilien</span>
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 219 kr
@@ -2408,6 +2497,9 @@ Rosé
 
 <span>📍 Niederösterreich</span>
 
+<span>
+🤪 12 %
+</span>    
 
 <span>
 💰 149 kr
@@ -2570,7 +2662,7 @@ data-vintage="2025"
 
 data-alcohol="14"
 
-data-0701="12"
+data-0701="11"
 data-0707="18"
 data-0710="24"
 
@@ -2607,6 +2699,9 @@ Concrete Carbonic Pinotage
 
 <span>📍 Western Cape</span>
 
+<span>
+🤪 14 %
+</span>    
 
 <span>
 💰 179 kr
@@ -2676,7 +2771,7 @@ Mycket fruktig smak med inslag av blåbär, lagerblad, mörka körsbär, viol, p
             <td>Växjö City</td>
 
             <td class="good">
-                12 st
+                11 st
             </td>
 
             <td>
@@ -2806,6 +2901,9 @@ Famille Fabre
 
 <span>📍 Languedoc-Roussillon</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 149 kr
@@ -3005,6 +3103,9 @@ Morellino di Scansano Riserva
 
 <span>📍 Toscana</span>
 
+<span>
+🤪 14.5 %
+</span>    
 
 <span>
 💰 169 kr
@@ -3204,6 +3305,9 @@ Sandpiper Barossa Shiraz
 
 <span>📍 South Australia</span>
 
+<span>
+🤪 14.5 %
+</span>    
 
 <span>
 💰 129 kr
@@ -3403,6 +3507,9 @@ Pinot Noir
 
 <span>📍 Aconcagua</span>
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 169 kr
@@ -3602,6 +3709,9 @@ Domaine du Causse d'Arboras
 
 <span>📍 Languedoc-Roussillon</span>
 
+<span>
+🤪 14 %
+</span>    
 
 <span>
 💰 199 kr
@@ -3801,6 +3911,9 @@ Valpolicella Ripasso
 
 <span>📍 Venetien</span>
 
+<span>
+🤪 14 %
+</span>    
 
 <span>
 💰 159 kr
@@ -4000,6 +4113,9 @@ Grand Prix Solaris
 
 
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 299 kr
@@ -4199,6 +4315,9 @@ Rosé Minuit
 
 <span>📍 Méditerranée</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 139 kr
@@ -4398,6 +4517,9 @@ Lingon
 
 <span>📍 Västerbottens län</span>
 
+<span>
+🤪 12 %
+</span>    
 
 <span>
 💰 199 kr
@@ -4597,6 +4719,9 @@ Valle Reale
 
 <span>📍 Abruzzerna</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 189 kr
@@ -4796,6 +4921,9 @@ Sangiovese
 
 <span>📍 Kalifornien</span>
 
+<span>
+🤪 12 %
+</span>    
 
 <span>
 💰 249 kr
@@ -4995,6 +5123,9 @@ Valle Reale
 
 <span>📍 Abruzzerna</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 179 kr
@@ -5194,6 +5325,9 @@ Brut
 
 <span>📍 Loiredalen</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 159 kr
@@ -5393,6 +5527,9 @@ data-0710="18"
 
 <span>📍 Balearerna</span>
 
+<span>
+🤪 12 %
+</span>    
 
 <span>
 💰 259 kr
@@ -5592,6 +5729,9 @@ Perlato del Bosco Vermentino
 
 <span>📍 Toscana</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 199 kr
@@ -5791,6 +5931,9 @@ Etna Rosato
 
 <span>📍 Sicilien</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 199 kr
@@ -5990,6 +6133,9 @@ Brut Reserve
 
 
 
+<span>
+🤪 12 %
+</span>    
 
 <span>
 💰 269 kr
@@ -6189,6 +6335,9 @@ Sainte-Pauline
 
 <span>📍 Languedoc-Roussillon</span>
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 179 kr
@@ -6388,6 +6537,9 @@ Viore Rosado
 
 <span>📍 Kastilien-León</span>
 
+<span>
+🤪 14 %
+</span>    
 
 <span>
 💰 99 kr
@@ -6587,6 +6739,9 @@ Telti-Kuruk Reserve
 
 
 
+<span>
+🤪 11.5 %
+</span>    
 
 <span>
 💰 179 kr
@@ -6786,6 +6941,9 @@ Willamette Valley Chardonnay
 
 <span>📍 Oregon</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 199 kr
@@ -6985,6 +7143,9 @@ Josetta Saffirio
 
 <span>📍 Piemonte</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 165 kr
@@ -7184,6 +7345,9 @@ Petillant Naturel
 
 <span>📍 Canterbury</span>
 
+<span>
+🤪 11.5 %
+</span>    
 
 <span>
 💰 219 kr
@@ -7383,6 +7547,9 @@ Glögg Original 1895
 
 
 
+<span>
+🤪 18 %
+</span>    
 
 <span>
 💰 239 kr
@@ -7582,6 +7749,9 @@ Baby Bandito
 
 <span>📍 Western Cape</span>
 
+<span>
+🤪 12 %
+</span>    
 
 <span>
 💰 189 kr
@@ -7781,6 +7951,9 @@ G.D. Vajra
 
 <span>📍 Piemonte</span>
 
+<span>
+🤪 5 %
+</span>    
 
 <span>
 💰 149 kr
@@ -7980,6 +8153,9 @@ Rosé
 
 <span>📍 Western Cape</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 129 kr
@@ -8179,6 +8355,9 @@ Mastroberardino
 
 <span>📍 Kampanien</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 175 kr
@@ -8378,6 +8557,9 @@ Domaine de Coyeux
 
 <span>📍 Rhonedalen</span>
 
+<span>
+🤪 15 %
+</span>    
 
 <span>
 💰 110 kr
@@ -8577,6 +8759,9 @@ La Ghirlanda
 
 <span>📍 Toscana</span>
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 219 kr
@@ -8776,6 +8961,9 @@ Georg Breuer
 
 <span>📍 Rheingau</span>
 
+<span>
+🤪 11 %
+</span>    
 
 <span>
 💰 159 kr
@@ -8975,6 +9163,9 @@ Rosado
 
 <span>📍 Baskien</span>
 
+<span>
+🤪 11.5 %
+</span>    
 
 <span>
 💰 160 kr
@@ -9174,6 +9365,9 @@ Rosé
 
 <span>📍 Provence</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 219 kr
@@ -9373,6 +9567,9 @@ Chichateau
 
 
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 159 kr
@@ -9572,6 +9769,9 @@ Arilds Vingård
 
 
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 287 kr
@@ -9771,6 +9971,9 @@ Rosa
 
 <span>📍 Burgenland</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 179 kr
@@ -9970,6 +10173,9 @@ Pét-Nat
 
 <span>📍 Katalonien</span>
 
+<span>
+🤪 11 %
+</span>    
 
 <span>
 💰 189 kr
@@ -10169,6 +10375,9 @@ Kintonis Winery
 
 <span>📍 Peloponnesos</span>
 
+<span>
+🤪 12 %
+</span>    
 
 <span>
 💰 119 kr
@@ -10368,6 +10577,9 @@ Valle Reale
 
 <span>📍 Abruzzerna</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 179 kr
@@ -10567,6 +10779,9 @@ Terra Costantino
 
 <span>📍 Sicilien</span>
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 179 kr
@@ -10766,6 +10981,9 @@ Sancerre Rosé Les Belles Vignes
 
 <span>📍 Loiredalen</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 199 kr
@@ -10965,6 +11183,9 @@ Coastal Selection Chardonnay
 
 <span>📍 Kalifornien</span>
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 199 kr
@@ -11164,6 +11385,9 @@ E. Guigal
 
 <span>📍 Rhonedalen</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 249 kr
@@ -11363,6 +11587,9 @@ Rosabella Rosato
 
 
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 139 kr
@@ -11562,6 +11789,9 @@ Rüdesheim Pinot Noir Rosé
 
 <span>📍 Rheingau</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 149 kr
@@ -11761,6 +11991,9 @@ The Globe Reserve Tawny Port
 
 <span>📍 Douro</span>
 
+<span>
+🤪 20 %
+</span>    
 
 <span>
 💰 500 kr
@@ -11960,6 +12193,9 @@ Sauvignon Blanc
 
 <span>📍 Wairarapa</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 199 kr
@@ -12159,6 +12395,9 @@ Pinot Grigio Rosato
 
 <span>📍 Trentino-Alto Adige</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 99 kr
@@ -12358,6 +12597,9 @@ Crémant de Bourgogne Rosé
 
 <span>📍 Bourgogne</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 199 kr
@@ -12557,6 +12799,9 @@ Benanti
 
 <span>📍 Sicilien</span>
 
+<span>
+🤪 12 %
+</span>    
 
 <span>
 💰 239 kr
@@ -12756,6 +13001,9 @@ Verdejo
 
 <span>📍 Kastilien-León</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 129 kr
@@ -12955,6 +13203,9 @@ Chardonnay
 
 <span>📍 Kalifornien</span>
 
+<span>
+🤪 14.5 %
+</span>    
 
 <span>
 💰 275 kr
@@ -13154,6 +13405,9 @@ Agricola Punica
 
 <span>📍 Sardinien</span>
 
+<span>
+🤪 14.5 %
+</span>    
 
 <span>
 💰 179 kr
@@ -13353,6 +13607,9 @@ Reserva de la Familia
 
 <span>📍 Cava</span>
 
+<span>
+🤪 12 %
+</span>    
 
 <span>
 💰 219 kr
@@ -13552,6 +13809,9 @@ Organic Rosé
 
 <span>📍 South Australia</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 49 kr
@@ -13751,6 +14011,9 @@ Touriga Nacional
 
 <span>📍 Douro</span>
 
+<span>
+🤪 14.5 %
+</span>    
 
 <span>
 💰 169 kr
@@ -13950,6 +14213,9 @@ Loureiro
 
 <span>📍 Vinho Verde</span>
 
+<span>
+🤪 11 %
+</span>    
 
 <span>
 💰 179 kr
@@ -14149,6 +14415,9 @@ Bogle Vineyards
 
 <span>📍 Kalifornien</span>
 
+<span>
+🤪 14.5 %
+</span>    
 
 <span>
 💰 189 kr
@@ -14348,6 +14617,9 @@ Chardonnay
 
 <span>📍 Western Cape</span>
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 249 kr
@@ -14547,6 +14819,9 @@ La Colombera
 
 <span>📍 Piemonte</span>
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 199 kr
@@ -14746,6 +15021,9 @@ Albus
 
 <span>📍 Bourgogne</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 199 kr
@@ -14945,6 +15223,9 @@ Syrah Grenache 1753
 
 <span>📍 Rhonedalen</span>
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 149 kr
@@ -15144,6 +15425,9 @@ Villata
 
 <span>📍 Piemonte</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 149 kr
@@ -15343,6 +15627,9 @@ Walker Bay Pinot Noir
 
 <span>📍 Western Cape</span>
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 219 kr
@@ -15542,6 +15829,9 @@ Riesling Grosses Gewächs
 
 <span>📍 Rheinhessen</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 349 kr
@@ -15741,6 +16031,9 @@ Rimage Vin doux naturel
 
 <span>📍 Languedoc-Roussillon</span>
 
+<span>
+🤪 16 %
+</span>    
 
 <span>
 💰 283 kr
@@ -15940,6 +16233,9 @@ Brut Millésimé
 
 <span>📍 Champagne</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 769 kr
@@ -16139,6 +16435,9 @@ Garnatxa
 
 <span>📍 Katalonien</span>
 
+<span>
+🤪 15 %
+</span>    
 
 <span>
 💰 162 kr
@@ -16338,6 +16637,9 @@ Bodega Argento
 
 <span>📍 Patagonien</span>
 
+<span>
+🤪 12 %
+</span>    
 
 <span>
 💰 289 kr
@@ -16537,6 +16839,9 @@ La Jasse
 
 <span>📍 Languedoc-Roussillon</span>
 
+<span>
+🤪 14.5 %
+</span>    
 
 <span>
 💰 269 kr
@@ -16736,6 +17041,9 @@ Weiss
 
 <span>📍 Weinland Österreich</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 250 kr
@@ -16935,6 +17243,9 @@ Fleurie Lieu-dit
 
 <span>📍 Bourgogne</span>
 
+<span>
+🤪 12 %
+</span>    
 
 <span>
 💰 249 kr
@@ -17134,6 +17445,9 @@ Junmai Ginjo
 
 
 
+<span>
+🤪 15 %
+</span>    
 
 <span>
 💰 249 kr
@@ -17333,6 +17647,9 @@ Gloria
 
 <span>📍 Cuyo</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 299 kr
@@ -17532,6 +17849,9 @@ X3 Rosé
 
 
 
+<span>
+🤪 15 %
+</span>    
 
 <span>
 💰 400 kr
@@ -17731,6 +18051,9 @@ Pinot Bianco Vorberg Riserva
 
 <span>📍 Trentino-Alto Adige</span>
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 329 kr
@@ -17930,6 +18253,9 @@ Pôpa Amphora Branco
 
 
 
+<span>
+🤪 12 %
+</span>    
 
 <span>
 💰 249 kr
@@ -18129,6 +18455,9 @@ Brisas Orange
 
 <span>📍 Région del Sur</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 179 kr
@@ -18328,6 +18657,9 @@ Pinot Noir
 
 <span>📍 Coquimbo</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 269 kr
@@ -18527,6 +18859,9 @@ Massoc Frères
 
 <span>📍 Région del Sur</span>
 
+<span>
+🤪 14 %
+</span>    
 
 <span>
 💰 199 kr
@@ -18726,6 +19061,9 @@ Pinot Noir
 
 <span>📍 Oregon</span>
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 229 kr
@@ -18925,6 +19263,9 @@ Frog's Leap
 
 <span>📍 Kalifornien</span>
 
+<span>
+🤪 14.5 %
+</span>    
 
 <span>
 💰 399 kr
@@ -19124,6 +19465,9 @@ Pet-Nat
 
 
 
+<span>
+🤪 12 %
+</span>    
 
 <span>
 💰 199 kr
@@ -19323,6 +19667,9 @@ Cantine Valenti
 
 <span>📍 Sicilien</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 179 kr
@@ -19522,6 +19869,9 @@ Barbera d'Asti Superiore
 
 <span>📍 Piemonte</span>
 
+<span>
+🤪 14.5 %
+</span>    
 
 <span>
 💰 150 kr
@@ -19721,6 +20071,9 @@ Rosé
 
 <span>📍 Niederösterreich</span>
 
+<span>
+🤪 12 %
+</span>    
 
 <span>
 💰 279 kr
@@ -19920,6 +20273,9 @@ Costadilà
 
 
 
+<span>
+🤪 11 %
+</span>    
 
 <span>
 💰 223 kr
@@ -20119,6 +20475,9 @@ Rosato
 
 <span>📍 Sicilien</span>
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 269 kr
@@ -20318,6 +20677,9 @@ Baga & Castelão
 
 <span>📍 Bairrada</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 200 kr
@@ -20517,6 +20879,9 @@ Signature Barrel Fermented Torrontés
 
 <span>📍 Cuyo</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 189 kr
@@ -20716,6 +21081,9 @@ Santo Wines
 
 <span>📍 Kykladerna</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 300 kr
@@ -20915,6 +21283,9 @@ Extra Brut Reserve
 
 <span>📍 Niederösterreich</span>
 
+<span>
+🤪 12 %
+</span>    
 
 <span>
 💰 229 kr
@@ -21114,6 +21485,9 @@ Antonin Guyon
 
 <span>📍 Bourgogne</span>
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 475 kr
@@ -21313,6 +21687,9 @@ Sonoma Coast Chardonnay
 
 <span>📍 Kalifornien</span>
 
+<span>
+🤪 14 %
+</span>    
 
 <span>
 💰 259 kr
@@ -21512,6 +21889,9 @@ Chill Red Grenache
 
 <span>📍 Kalifornien</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 80 kr
@@ -21711,6 +22091,9 @@ L'Échenault de Serre
 
 <span>📍 Bourgogne</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 269 kr
@@ -21910,6 +22293,9 @@ Granville
 
 <span>📍 Oregon</span>
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 399 kr
@@ -22109,6 +22495,9 @@ Amour Rosé
 
 <span>📍 Provence</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 219 kr
@@ -22308,6 +22697,9 @@ Chateau Guiraud
 
 <span>📍 Bordeaux</span>
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 310 kr
@@ -22507,6 +22899,9 @@ Negre
 
 <span>📍 Katalonien</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 199 kr
@@ -22706,6 +23101,9 @@ Grande Reserve Rosé
 
 
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 229 kr
@@ -22905,6 +23303,9 @@ Oremus
 
 <span>📍 Tokaj</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 269 kr
@@ -23104,6 +23505,9 @@ Pinot Noir Rosé
 
 <span>📍 Rheingau</span>
 
+<span>
+🤪 12 %
+</span>    
 
 <span>
 💰 189 kr
@@ -23303,6 +23707,9 @@ Lanzaga
 
 <span>📍 Rioja</span>
 
+<span>
+🤪 14 %
+</span>    
 
 <span>
 💰 299 kr
@@ -23502,6 +23909,9 @@ Château de Camensac
 
 <span>📍 Bordeaux</span>
 
+<span>
+🤪 14 %
+</span>    
 
 <span>
 💰 479 kr
@@ -23701,6 +24111,9 @@ Aries Chardonnay
 
 <span>📍 Kalifornien</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 429 kr
@@ -23900,6 +24313,9 @@ Blanc
 
 <span>📍 Bordeaux</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 404 kr
@@ -24099,6 +24515,9 @@ Régnié
 
 
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 299 kr
@@ -24298,6 +24717,9 @@ Kirchweingarten
 
 <span>📍 Niederösterreich</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 399 kr
@@ -24497,6 +24919,9 @@ Terenzuola
 
 <span>📍 Ligurien</span>
 
+<span>
+🤪 12 %
+</span>    
 
 <span>
 💰 279 kr
@@ -24696,6 +25121,9 @@ Antonin Guyon
 
 <span>📍 Bourgogne</span>
 
+<span>
+🤪 14 %
+</span>    
 
 <span>
 💰 829 kr
@@ -24895,6 +25323,9 @@ Bandol Rosé
 
 <span>📍 Provence</span>
 
+<span>
+🤪 13.5 %
+</span>    
 
 <span>
 💰 260 kr
@@ -25094,6 +25525,9 @@ Las Fincas Rosado
 
 
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 129 kr
@@ -25293,6 +25727,9 @@ En Crèches
 
 <span>📍 Bourgogne</span>
 
+<span>
+🤪 14 %
+</span>    
 
 <span>
 💰 339 kr
@@ -25492,6 +25929,9 @@ Charmeur Rosé
 
 <span>📍 Provence</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 159 kr
@@ -25691,6 +26131,9 @@ Tenuta delle Terre Nere
 
 <span>📍 Sicilien</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 289 kr
@@ -25890,6 +26333,9 @@ Bianco Macerato
 
 
 
+<span>
+🤪 9 %
+</span>    
 
 <span>
 💰 330 kr
@@ -26089,6 +26535,9 @@ Chardonnay
 
 
 
+<span>
+🤪 14 %
+</span>    
 
 <span>
 💰 329 kr
@@ -26288,6 +26737,9 @@ Chi Riesling
 
 <span>📍 Western Cape</span>
 
+<span>
+🤪 11 %
+</span>    
 
 <span>
 💰 229 kr
@@ -26487,6 +26939,9 @@ Soave Classico
 
 <span>📍 Venetien</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 232 kr
@@ -26686,6 +27141,9 @@ Château Lagrange
 
 <span>📍 Bordeaux</span>
 
+<span>
+🤪 14.5 %
+</span>    
 
 <span>
 💰 749 kr
@@ -26885,6 +27343,9 @@ Milan Nestarec
 
 
 
+<span>
+🤪 12 %
+</span>    
 
 <span>
 💰 220 kr
@@ -27084,6 +27545,9 @@ Trousseau Gris
 
 <span>📍 Kalifornien</span>
 
+<span>
+🤪 12.5 %
+</span>    
 
 <span>
 💰 379 kr
@@ -27283,6 +27747,9 @@ Barrancos de Pizarra
 
 <span>📍 Kastilien-León</span>
 
+<span>
+🤪 15 %
+</span>    
 
 <span>
 💰 395 kr
@@ -27482,6 +27949,9 @@ Sonoma Coast Pinot Noir
 
 <span>📍 Kalifornien</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 499 kr
@@ -27681,6 +28151,9 @@ Weingüter Wegeler
 
 <span>📍 Rheingau</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 699 kr
@@ -27880,6 +28353,9 @@ Cabernet Sauvignon
 
 <span>📍 Kalifornien</span>
 
+<span>
+🤪 14.5 %
+</span>    
 
 <span>
 💰 199 kr
@@ -28079,6 +28555,9 @@ Cheval des Andes
 
 <span>📍 Cuyo</span>
 
+<span>
+🤪 14 %
+</span>    
 
 <span>
 💰 999 kr
@@ -28278,6 +28757,9 @@ White
 
 <span>📍 Western Cape</span>
 
+<span>
+🤪 14 %
+</span>    
 
 <span>
 💰 299 kr
@@ -28477,6 +28959,9 @@ Roc des Boutires
 
 <span>📍 Bourgogne</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 379 kr
@@ -28676,6 +29161,9 @@ La Masia Chardonnay
 
 
 
+<span>
+🤪 14 %
+</span>    
 
 <span>
 💰 449 kr
@@ -28875,6 +29363,9 @@ North Coast GSM
 
 <span>📍 Kalifornien</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 439 kr
@@ -29074,6 +29565,9 @@ McDougall Ranch Pinot Noir
 
 <span>📍 Kalifornien</span>
 
+<span>
+🤪 13 %
+</span>    
 
 <span>
 💰 669 kr
@@ -29273,6 +29767,9 @@ Alvaro Palacios
 
 <span>📍 Katalonien</span>
 
+<span>
+🤪 14.5 %
+</span>    
 
 <span>
 💰 849 kr
