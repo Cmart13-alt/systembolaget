@@ -263,7 +263,15 @@ ${js}
 
 }
 
+function formatShelf(shelf) {
 
+    if (!shelf) return "-";
+
+    return shelf
+        .toUpperCase()
+        .replace(/-\d{2}$/, "");
+
+}
 
 function createProductCard(product, stores) {
 
@@ -329,9 +337,7 @@ function createProductCard(product, stores) {
                     : "Slut"}
             </td>
 
-            <td>
-                ${stock.shelf || "-"}
-            </td>
+            <td>${formatShelf(stock.shelf)}</td>
 
         </tr>
 
