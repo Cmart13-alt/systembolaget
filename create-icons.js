@@ -1,151 +1,263 @@
 const fs = require("fs");
 const path = require("path");
 const sharp = require("sharp");
-const pngToIco = require("png-to-ico");
-const archiver = require("archiver");
+
+
+let pngToIco = null;
+
+try {
+    pngToIco = require("png-to-ico").default || require("png-to-ico");
+} catch (err) {
+    console.warn("png-to-ico saknas, favicon.ico kommer inte skapas.");
+}
 
 const INPUT = "logo.png";
-const OUT = "icons";
+const OUTPUT = "icons";
 
-if (!fs.existsSync(INPUT)) {
-    console.error("❌ Kan inte hitta logo.png");
-    process.exit(1);
+const THEMES = [
+    {
+        name: "light",
+        background: { r: 255, g: 255, b: 255, alpha: 1 },
+        foreground: { r: 11, g: 107, b: 58, alpha: 1 }
+    },
+    {
+        name: "dark",
+        background: { r: 11, g: 107, b: 58, alpha: 1 },
+        foreground: { r: 255, g: 255, b: 255, alpha: 1 }
+    }
+];
+
+function ensureDirectory(dir) {
+
+    if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+    }
+
 }
 
-if (!fs.existsSync(OUT)) {
-    fs.mkdirSync(OUT);
+function initialiseFolders() {
+
+    if (!fs.existsSync(INPUT)) {
+        console.error(`❌ Hittar inte ${INPUT}`);
+        process.exit(1);
+    }
+
+    ensureDirectory(OUTPUT);
+
+    for (const theme of THEMES) {
+        ensureDirectory(path.join(OUTPUT, theme.name));
+    }
+
+    console.log("✔ Mappar skapade.");
+
 }
 
-async function createIcon(size, scale, filename) {
+initialiseFolders();
+async function main() {
 
-    const logo = sharp(INPUT);
+    try {
 
-    const metadata = await logo.metadata();
+        initialiseFolders();
 
-    const target = Math.round(size * scale);
+        console.log("");
+        console.log("==============================");
+        console.log(" Icon Generator");
+        console.log("==============================");
 
-    const resized = await logo
-        .resize(target, target, {
+        for (const theme of THEMES) {
+
+            console.log("");
+            console.log(`Tema: ${theme.name}`);
+
+            await createAllIcons(theme);
+            await createSvg(theme);
+            await createIco(theme);
+        
+
+            console.log(`✔ ${theme.name} klart`);
+
+        }
+
+        console.log("");
+        console.log("==============================");
+        console.log(" Alla ikoner genererade!");
+        console.log("==============================");
+        console.log("");
+
+    }
+    catch (err) {
+
+        console.error("");
+        console.error("Ett fel inträffade:");
+        console.error(err);
+
+        process.exit(1);
+
+    }
+
+}
+
+main();
+
+
+async function prepareLogo(theme) {
+
+    const { data, info } = await sharp(INPUT)
+        .ensureAlpha()
+        .raw()
+        .toBuffer({ resolveWithObject: true });
+
+    // RGBA
+    for (let i = 0; i < data.length; i += 4) {
+
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+
+        // Ljushet
+        const brightness = (r + g + b) / 3;
+
+        // Helt vitt = transparent
+        if (brightness > 245) {
+            data[i + 3] = 0;
+            continue;
+        }
+
+        // Behåll mjuka kanter genom att låta ljusare pixlar
+        // få lägre alfa istället för att bara klippa bort dem.
+        let alpha = 255;
+
+        if (brightness > 180) {
+            alpha = Math.round(
+                255 * ((245 - brightness) / (245 - 180))
+            );
+        }
+
+        data[i]     = theme.foreground.r;
+        data[i + 1] = theme.foreground.g;
+        data[i + 2] = theme.foreground.b;
+        data[i + 3] = alpha;
+    }
+
+    return sharp(data, {
+        raw: info
+    }).png();
+
+}
+
+async function createIcon(theme, size, scale, filename) {
+
+    // Skapa logotypen i rätt färg
+    const logo = await prepareLogo(theme);
+
+    // Hur stor logotypen ska vara i förhållande till ikonen
+    const logoSize = Math.round(size * scale);
+
+    const logoBuffer = await logo
+        .resize(logoSize, logoSize, {
             fit: "inside",
             withoutEnlargement: true
         })
         .png()
         .toBuffer();
 
-    const resizedMeta = await sharp(resized).metadata();
+    const metadata = await sharp(logoBuffer).metadata();
 
-    const left = Math.round((size - resizedMeta.width) / 2);
-    const top = Math.round((size - resizedMeta.height) / 2);
+    // Centrera logotypen
+    const left = Math.round((size - metadata.width) / 2);
+    const top = Math.round((size - metadata.height) / 2);
 
     await sharp({
         create: {
             width: size,
             height: size,
             channels: 4,
-            background: {
-                r: 255,
-                g: 255,
-                b: 255,
-                alpha: 1
-            }
+            background: theme.background
         }
     })
-        .composite([
-            {
-                input: resized,
-                left,
-                top
-            }
-        ])
-        .png()
-        .toFile(path.join(OUT, filename));
+    .composite([
+        {
+            input: logoBuffer,
+            left,
+            top
+        }
+    ])
+    .png()
+    .toFile(filename);
 
-    console.log("✔", filename);
+    console.log(`✔ ${path.basename(filename)}`);
+
 }
 
-async function createSvg() {
+async function createAllIcons(theme) {
 
-    const png = fs.readFileSync(path.join(OUT, "favicon.png"));
+    const dir = path.join(OUTPUT, theme.name);
 
-    const base64 = png.toString("base64");
+    console.log(`\nSkapar ${theme.name}-ikoner...`);
+
+    await createIcon(theme, 512, 0.82, path.join(dir, "icon-512.png"));
+    await createIcon(theme, 192, 0.82, path.join(dir, "icon-192.png"));
+    await createIcon(theme, 180, 0.82, path.join(dir, "apple-touch-icon.png"));
+
+    // Maskable ska ha lite större marginal
+    await createIcon(theme, 512, 0.66, path.join(dir, "maskable-512.png"));
+
+}
+
+async function createSvg(theme) {
+
+    const dir = path.join(OUTPUT, theme.name);
+
+    const png = fs.readFileSync(
+        path.join(dir, "icon-192.png")
+    ).toString("base64");
 
     const svg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-<image href="data:image/png;base64,${base64}" width="64" height="64"/>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 192 192">
+    <image
+        href="data:image/png;base64,${png}"
+        width="192"
+        height="192"/>
 </svg>`;
 
-    fs.writeFileSync(path.join(OUT, "favicon.svg"), svg);
-}
-
-async function createIco() {
-
-    const ico = await pngToIco(path.join(OUT, "favicon.png"));
-
     fs.writeFileSync(
-        path.join(OUT, "favicon.ico"),
-        ico
+        path.join(dir, "favicon.svg"),
+        svg
     );
-}
 
-async function createZip() {
-
-    return new Promise((resolve, reject) => {
-
-        const output = fs.createWriteStream("vinlogg-icons.zip");
-        const archive = archiver("zip", {
-            zlib: { level: 9 }
-        });
-
-        output.on("close", resolve);
-        archive.on("error", reject);
-
-        archive.pipe(output);
-
-        [
-            "favicon.svg",
-            "favicon.ico",
-            "icon-192.png",
-            "icon-512.png",
-            "maskable-512.png",
-            "apple-touch-icon.png"
-        ].forEach(file => {
-
-            archive.file(
-                path.join(OUT, file),
-                { name: file }
-            );
-
-        });
-
-        archive.finalize();
-
-    });
+    console.log("✔ favicon.svg");
 
 }
 
-(async () => {
+async function createIco(theme) {
 
-    console.log("Skapar ikoner...");
+    if (!pngToIco)
+        return;
 
-    await createIcon(512, 0.82, "icon-512.png");
-    await createIcon(192, 0.82, "icon-192.png");
-    await createIcon(180, 0.82, "apple-touch-icon.png");
+    const dir = path.join(OUTPUT, theme.name);
 
-    // Maskable får större vit kant
-    await createIcon(512, 0.66, "maskable-512.png");
+    try {
 
-    await createIcon(64, 0.82, "favicon.png");
+        const ico = await pngToIco(
+            path.join(dir, "icon-192.png")
+        );
 
-    await createSvg();
+        fs.writeFileSync(
+            path.join(dir, "favicon.ico"),
+            ico
+        );
 
-    await createIco();
+        console.log("✔ favicon.ico");
 
-    fs.unlinkSync(path.join(OUT, "favicon.png"));
+    }
+    catch (err) {
 
-    await createZip();
+        console.warn(
+            "favicon.ico kunde inte skapas."
+        );
 
-    console.log();
-    console.log("✅ Klart!");
-    console.log("📦 vinlogg-icons.zip skapad.");
+    }
 
-})();
+}
+
