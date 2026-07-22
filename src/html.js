@@ -38,31 +38,25 @@ function generateReport(products, stores) {
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<meta name="theme-color" content="#0b6b3a">
-
-<meta name="description" content="Tillfälligt sortiment på Systembolaget i Växjö">
-
-<meta name="mobile-web-app-capable" content="yes">
-
-<meta name="apple-mobile-web-app-capable" content="yes">
-
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-<meta name="apple-mobile-web-app-title" content="Vinguide">
-
-<link rel="manifest" href="manifest.json">
-
-<link rel="icon" href="icon-192.png" type="image/png">
 
 <title>Vinguide - Växjö</title>
 
+<meta name="description" content="Tillfälligt sortiment på Systembolaget i Växjö">
+<meta name="theme-color" content="#0b6b3a">
+
+<link rel="manifest" href="manifest.json">
+
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Vinguide">
+
 <style>
-
 ${css}
-
 </style>
 
 </head>
