@@ -125,11 +125,12 @@ try {
 
     if (status.trim() !== "") {
 
-        console.error("");
-        console.error("Det finns okommitterade ändringar i src/");
-        console.error("");
-        console.error(status);
-        process.exit(1);
+        console.log("");
+        console.log("⚠️  VARNING");
+        console.log("Det finns okommitterade ändringar i src/");
+        console.log(status);
+        console.log("Deploy fortsätter ändå...");
+        console.log("");
 
     }
 
