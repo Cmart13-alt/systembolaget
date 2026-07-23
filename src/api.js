@@ -23,24 +23,37 @@ async function getProductsFromStore(storeId, maxProducts = null) {
 
     try {
 
-        const response = await axios.get(
-            `${BASE}/v2/productsearch/search`,
-            {
-                headers,
-                params: {
-                    page,
-                    size: 100,
-                    sortBy: "Score",
-                    sortDirection: "Ascending",
-                    categoryLevel1: "Vin",
-                    assortmentText: "Tillfälligt sortiment",
-                    storeId,
-                    isInStoreAssortmentSearch: true
-                }
-            }
-        );
-        console.log(response.data.metadata);
-        console.log(response.data.products.length);
+        // const response = await axios.get(
+        //     `${BASE}/v2/productsearch/search`,
+        //     {
+        //         headers,
+        //         params: {
+        //             page,
+        //             size: 100,
+        //             sortBy: "Score",
+        //             sortDirection: "Ascending",
+        //             categoryLevel1: "Vin",
+        //             assortmentText: "Tillfälligt sortiment",
+        //             storeId,
+        //             isInStoreAssortmentSearch: true
+        //         }
+        //     }
+        // );
+       const url = `${BASE}/v2/productsearch/search?page=1&size=30&sortBy=Score&sortDirection=Ascending&categoryLevel1=Vin&assortmentText=${encodeURIComponent("Tillfälligt sortiment")}&storeId=${storeId}&isInStoreAssortmentSearch=true`;
+
+const response = await fetch(url, {
+    headers: {
+        "ocp-apim-subscription-key": process.env.SYSTEMBOLAGET_KEY,
+        "x-visitor-id": "67eede6abe2999b2",
+        "referer": "https://www.systembolaget.se/",
+        "user-agent": "Mozilla/5.0"
+    }
+});
+
+const data = await response.json();
+
+console.log(data.metadata);
+console.log(data.products.length);
         const pageProducts = response.data.products;
             const fs = require("fs");
 
