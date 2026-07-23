@@ -29,7 +29,7 @@ async function getProductsFromStore(storeId, maxProducts = null) {
                 headers,
                 params: {
                     page,
-                    size: 30,
+                    size: 100,
                     sortBy: "Score",
                     sortDirection: "Ascending",
                     categoryLevel1: "Vin",
@@ -39,7 +39,8 @@ async function getProductsFromStore(storeId, maxProducts = null) {
                 }
             }
         );
-
+        console.log(response.data.metadata);
+        console.log(response.data.products.length);
         const pageProducts = response.data.products;
             const fs = require("fs");
 
