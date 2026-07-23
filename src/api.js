@@ -39,7 +39,10 @@ console.log("Hämtar sida", page);
                 }
             }
         );
-
+console.log(response.data.totalHits);
+console.log(response.data.totalPages);
+console.log(response.data.pagination);
+console.log(Object.keys(response.data));
         const pageProducts = response.data.products;
 
         products.push(...pageProducts);
