@@ -19,8 +19,10 @@ async function getProductsFromStore(storeId, maxProducts = null) {
     let more = true;
 
 
-    while (more) {
+   while (more) {
 
+    try {
+console.log("Hämtar sida", page);
         const response = await axios.get(
             `${BASE}/v2/productsearch/search`,
             {
@@ -38,17 +40,14 @@ async function getProductsFromStore(storeId, maxProducts = null) {
             }
         );
 
-
         const pageProducts = response.data.products;
 
         products.push(...pageProducts);
 
-        // Avbryt om vi nått max antal produkter
         if (maxProducts && products.length >= maxProducts) {
             products = products.slice(0, maxProducts);
             more = false;
         }
-
 
         if (pageProducts.length < 30) {
             more = false;
@@ -56,7 +55,25 @@ async function getProductsFromStore(storeId, maxProducts = null) {
             page++;
         }
 
+    } catch (err) {
+
+        console.log("========== FEL ==========");
+        console.log("Sida:", page);
+
+        if (err.config) {
+            console.log("URL:", err.config.url);
+            console.log("Params:", err.config.params);
+        }
+
+        if (err.response) {
+            console.log("Status:", err.response.status);
+            console.log(err.response.data);
+        }
+
+        throw err;
     }
+
+}
 
 
     return products;
