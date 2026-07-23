@@ -18,77 +18,68 @@ async function getProductsFromStore(storeId, maxProducts = null) {
     let page = 1;
     let more = true;
 
+    while (more) {
 
-   while (more) {
+        try {
 
-    try {
-
-        const response = await axios.get(
-            `${BASE}/v2/productsearch/search`,
-            {
-                headers,
-                params: {
-                    page,
-                    size: 30,
-                    sortBy: "Score",
-                    sortDirection: "Ascending",
-                    categoryLevel1: "Vin",
-                    assortmentText: "Tillfälligt sortiment",
-                    storeId,
-                    isInStoreAssortmentSearch: true
+            const response = await axios.get(
+                `${BASE}/v2/productsearch/search`,
+                {
+                    headers,
+                    params: {
+                        page,
+                        size: 30,
+                        sortBy: "Score",
+                        sortDirection: "Ascending",
+                        categoryLevel1: "Vin",
+                        assortmentText: "Tillfälligt sortiment",
+                        storeId,
+                        isInStoreAssortmentSearch: true
+                    }
                 }
+            );
+
+            const data = response.data;
+
+            console.log(
+                `Sida ${page}: ${data.products.length} produkter (docCount=${data.metadata.docCount}, totalPages=${data.metadata.totalPages})`
+            );
+
+            const pageProducts = data.products;
+
+            products.push(...pageProducts);
+
+            if (maxProducts && products.length >= maxProducts) {
+                products = products.slice(0, maxProducts);
+                more = false;
+                continue;
             }
-        );
 
-        const data = response.data;
-
-        console.log(data.metadata);
-        console.log(data.products.length);
-
-        const pageProducts = data.products;
-        const pageProducts = response.data.products;
-            const fs = require("fs");
-
-            if (page === 1) {
-                fs.writeFileSync(
-                    "metadata.json",
-                    JSON.stringify(response.data.metadata, null, 2)
-                );
+            if (page >= data.metadata.totalPages) {
+                more = false;
+            } else {
+                page++;
             }
-            console.log(`Sida ${page}: ${pageProducts.length} produkter`);
-        products.push(...pageProducts);
 
-        if (maxProducts && products.length >= maxProducts) {
-            products = products.slice(0, maxProducts);
-            more = false;
+        } catch (err) {
+
+            console.log("========== FEL ==========");
+            console.log("Sida:", page);
+
+            if (err.config) {
+                console.log("URL:", err.config.url);
+                console.log("Params:", err.config.params);
+            }
+
+            if (err.response) {
+                console.log("Status:", err.response.status);
+                console.dir(err.response.data, { depth: null });
+            }
+
+            throw err;
         }
 
-        if (pageProducts.length < 30) {
-            more = false;
-        } else {
-            page++;
-        }
-
-    } catch (err) {
-
-        console.log("========== FEL ==========");
-        console.log("Sida:", page);
-
-        if (err.config) {
-            console.log("URL:", err.config.url);
-            console.log("Params:", err.config.params);
-        }
-
-        if (err.response) {
-            console.log("Status:", err.response.status);
-            console.log(err.response.data);
-        }
-
-        throw err;
     }
-
-}
-
 
     return products;
 }
@@ -105,33 +96,30 @@ async function getStock(storeId, productId) {
     );
 
     return response.data;
-
 }
 
 
-// Hämtar alla butiker och slår ihop produkter
+// Hämtar produkter från alla butiker
 async function getAllProducts(stores, maxProducts = null) {
 
     const productMap = new Map();
-
 
     for (const store of stores) {
 
         console.log(`Hämtar ${store.name}...`);
 
-        const products = await getProductsFromStore(store.id, maxProducts);
-
+        const products = await getProductsFromStore(
+            store.id,
+            maxProducts
+        );
 
         for (const product of products) {
 
             if (!productMap.has(product.productId)) {
 
                 productMap.set(product.productId, {
-
                     ...product,
-
                     stock: {}
-
                 });
 
             }
@@ -140,18 +128,15 @@ async function getAllProducts(stores, maxProducts = null) {
 
     }
 
-
     return Array.from(productMap.values());
 
 }
 
 
-// Lägger till lager från alla butiker
+// Lägger till lagerinformation
 async function enrichProducts(products, stores) {
 
-
     for (const product of products) {
-
 
         for (const store of stores) {
 
@@ -162,25 +147,18 @@ async function enrichProducts(products, stores) {
                     product.productId
                 );
 
-
                 product.stock[store.id] = {
-
                     name: store.name,
                     amount: stock.stock,
                     shelf: stock.shelf
-
                 };
-
 
             } catch {
 
-
                 product.stock[store.id] = {
-
                     name: store.name,
                     amount: 0,
                     shelf: ""
-
                 };
 
             }
@@ -189,15 +167,11 @@ async function enrichProducts(products, stores) {
 
     }
 
-
     return products;
-
 }
 
 
 module.exports = {
-
     getAllProducts,
     enrichProducts
-
 };
