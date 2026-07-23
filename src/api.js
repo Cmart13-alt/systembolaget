@@ -5,7 +5,7 @@ const BASE = "https://api-extern.systembolaget.se/sb-api-ecommerce";
 
 const headers = {
     "ocp-apim-subscription-key": process.env.SYSTEMBOLAGET_KEY,
-    "x-visitor-id": "e423bd25e0c535b0",
+    "x-visitor-id": "67eede6abe2999b2",
     "referer": "https://www.systembolaget.se/",
     "user-agent": "Mozilla/5.0"
 };
