@@ -22,7 +22,7 @@ async function getProductsFromStore(storeId, maxProducts = null) {
    while (more) {
 
     try {
-console.log("Hämtar sida", page);
+
         const response = await axios.get(
             `${BASE}/v2/productsearch/search`,
             {
@@ -39,12 +39,17 @@ console.log("Hämtar sida", page);
                 }
             }
         );
-console.log(response.data.totalHits);
-console.log(response.data.totalPages);
-console.log(response.data.pagination);
-console.log(Object.keys(response.data));
-        const pageProducts = response.data.products;
 
+        const pageProducts = response.data.products;
+            const fs = require("fs");
+
+            if (page === 1) {
+                fs.writeFileSync(
+                    "metadata.json",
+                    JSON.stringify(response.data.metadata, null, 2)
+                );
+            }
+            console.log(`Sida ${page}: ${pageProducts.length} produkter`);
         products.push(...pageProducts);
 
         if (maxProducts && products.length >= maxProducts) {
