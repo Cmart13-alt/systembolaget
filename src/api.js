@@ -40,8 +40,12 @@ async function getProductsFromStore(storeId, maxProducts = null) {
             }
         );
 
-console.log(data.metadata);
-console.log(data.products.length);
+        const data = response.data;
+
+        console.log(data.metadata);
+        console.log(data.products.length);
+
+        const pageProducts = data.products;
         const pageProducts = response.data.products;
             const fs = require("fs");
 
