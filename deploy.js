@@ -1,3 +1,32 @@
+const fs = require("fs");
+const path = require("path");
+
+const logDir = path.join(__dirname, "logs");
+
+fs.mkdirSync(logDir, { recursive: true });
+
+const logfile = path.join(
+    logDir,
+    `${new Date().toISOString().slice(0,10)}.log`
+);
+
+const stream = fs.createWriteStream(logfile, { flags: "a" });
+
+const originalLog = console.log;
+const originalError = console.error;
+
+console.log = (...args) => {
+    const line = args.join(" ");
+    originalLog(...args);
+    stream.write(line + "\n");
+};
+
+console.error = (...args) => {
+    const line = args.join(" ");
+    originalError(...args);
+    stream.write("[ERROR] " + line + "\n");
+};
+
 const { execSync } = require("child_process");
 
 function run(command, inherit = true) {
