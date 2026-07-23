@@ -20,3 +20,9 @@ Desktop.ini
 
 # Tillfälliga filer
 *.tmp
+
+# Batch-filer
+*.bat
+
+# Genererade ikoner
+icons/

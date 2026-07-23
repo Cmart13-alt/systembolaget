@@ -23,7 +23,7 @@ const THEMES = [
     {
         name: "dark",
         background: { r: 11, g: 107, b: 58, alpha: 1 },
-        foreground: { r: 255, g: 255, b: 255, alpha: 1 }
+        foreground: { r: 245, g: 182, b: 220, alpha: 1 }
     }
 ];
 
