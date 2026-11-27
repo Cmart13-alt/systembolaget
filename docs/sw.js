@@ -1,4 +1,4 @@
-const CACHE_NAME = "vinguide-1795716126047";
+const CACHE_NAME = "vinguide-1795802517752";
 
 const FILES_TO_CACHE = [
     "./",
